@@ -1,0 +1,108 @@
+{
+  "theme": "LIGHT",
+  "archetype": "Archetype 1 (Organic & Earthy) with Archetype 5 (Jewel & Luxury) influences",
+  "brand_identity": {
+    "name": "Dazzle Dental & Cosmetic Studio",
+    "tagline": "Dental & Cosmetic Studio — Teeth | Skin | Hair",
+    "vibe": "Premium, trustworthy, spa-like, editorial, elegant",
+    "primary_logo_url": "https://customer-assets.emergentagent.com/job_1f6d6be4-4280-4438-98e9-2b968b61d501/artifacts/96gf8srp_IMG_7906.JPG"
+  },
+  "colors": {
+    "background_primary": "#FDFDFB",
+    "background_secondary": "#F5F5F0",
+    "brand_navy": "#1F4E79",
+    "brand_teal": "#5BA9A8",
+    "text_primary": "#0F172A",
+    "text_secondary": "#475569",
+    "accent_subtle": "#E8F0F0"
+  },
+  "tailwind_config_extensions": {
+    "colors": {
+      "brand": {
+        "navy": "#1F4E79",
+        "teal": "#5BA9A8",
+        "light": "#FDFDFB",
+        "sand": "#F5F5F0",
+        "dark": "#0A1929"
+      }
+    },
+    "fontFamily": {
+      "serif": ["Playfair Display", "serif"],
+      "sans": ["Outfit", "sans-serif"]
+    }
+  },
+  "typography": {
+    "h1": "font-serif text-4xl sm:text-5xl lg:text-6xl tracking-tight text-brand-navy leading-tight",
+    "h2": "font-serif text-3xl sm:text-4xl text-brand-navy tracking-tight",
+    "h3": "font-sans text-xl sm:text-2xl font-medium text-brand-navy",
+    "body": "font-sans text-base text-text-secondary leading-relaxed",
+    "overline": "font-sans text-xs font-bold uppercase tracking-[0.2em] text-brand-teal"
+  },
+  "spacing_and_layout": {
+    "section_padding": "py-24 md:py-32",
+    "container_padding": "px-6 md:px-12 lg:px-24",
+    "grid_bento": "grid grid-cols-1 md:grid-cols-12 gap-8 lg:gap-12",
+    "card_radius": "rounded-2xl md:rounded-[32px]",
+    "button_radius": "rounded-full"
+  },
+  "components": {
+    "hero": {
+      "layout": "Overlapping layout with a split view. Left side: typography, overline, H1, tagline, dual CTAs. Right side: large high-res image with elegant rounded corners or abstract shape mask.",
+      "background": "bg-brand-light relative overflow-hidden",
+      "decorations": "Subtle grain texture, floating brand-teal blurred blobs for a premium cosmetic vibe."
+    },
+    "services_section": {
+      "layout": "Grid layout. Instead of traditional cards, use large visual blocks (images) with text overlaid at the bottom using a glassmorphism gradient (bg-gradient-to-t from-brand-navy/80 to-transparent).",
+      "hover_effect": "group-hover:scale-105 transition-transform duration-700 ease-out"
+    },
+    "booking_form": {
+      "style": "Clean, editorial layout. Wrap the form in a bg-white container with shadow-[0_8px_32px_rgba(31,78,121,0.08)] and rounded-3xl. Use Shadcn inputs with border-b-2 border-brand-sand bg-transparent instead of full borders for a lightweight aesthetic."
+    },
+    "navigation": {
+      "style": "Sticky crystal glass header. backdrop-blur-xl bg-brand-light/80 border-b border-brand-navy/5. Links must use font-sans, uppercase, text-sm tracking-widest."
+    },
+    "buttons": {
+      "primary": "bg-brand-navy text-white px-8 py-4 rounded-full hover:bg-brand-teal transition-colors duration-300 font-sans tracking-wide uppercase text-sm",
+      "secondary": "border border-brand-navy text-brand-navy px-8 py-4 rounded-full hover:bg-brand-navy hover:text-white transition-colors duration-300 font-sans tracking-wide uppercase text-sm",
+      "whatsapp": "fixed bottom-8 right-8 bg-[#25D366] text-white p-4 rounded-full shadow-lg hover:scale-110 transition-transform z-50 flex items-center justify-center"
+    }
+  },
+  "animations": {
+    "libraries": ["framer-motion", "lucide-react"],
+    "scroll": "Use Framer Motion's `whileInView` for gentle fade-up (y: 30 to y: 0) and opacity (0 to 1) with easeOut, duration: 0.8.",
+    "page_load": "Curtain reveal for the hero image (clip-path expansion)."
+  },
+  "image_urls": {
+    "hero_main": {
+      "url": "https://images.pexels.com/photos/5355921/pexels-photo-5355921.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+      "description": "Premium modern dental clinic interior used in hero section."
+    },
+    "service_teeth": {
+      "url": "https://images.unsplash.com/photo-1758600434465-de17b9aef852?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1NTN8MHwxfHNlYXJjaHwyfHxzbWlsaW5nJTIwd29tYW4lMjBwZXJmZWN0JTIwdGVldGh8ZW58MHx8fHwxNzc4NDg1MzU1fDA&ixlib=rb-4.1.0&q=85",
+      "description": "Smiling woman with perfect teeth for Teeth Service card."
+    },
+    "service_skin": {
+      "url": "https://images.pexels.com/photos/37229316/pexels-photo-37229316.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+      "description": "Luxurious skincare treatment for Skin Service card."
+    },
+    "service_hair": {
+      "url": "https://images.unsplash.com/photo-1764971590992-6cb000c079ac?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjAzMzJ8MHwxfHNlYXJjaHwxfHxiZWF1dGlmdWwlMjBoZWFsdGh5JTIwaGFpcnxlbnwwfHx8fDE3Nzg0ODUzNTV8MA&ixlib=rb-4.1.0&q=85",
+      "description": "Beautiful healthy hair portrait for Hair Service card."
+    },
+    "about_clinic": {
+      "url": "https://images.pexels.com/photos/4269361/pexels-photo-4269361.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+      "description": "Modern clinic showcasing clean and trusted medical environment."
+    }
+  },
+  "instructions_to_main_agent": [
+    "Use Tailwind CSS for styling and Framer Motion for interactive animations.",
+    "Implement the Playfair Display font for all Headings (H1, H2) and Outfit for body and button texts.",
+    "Strictly follow the color palette. Backgrounds should be off-white/pearl (#FDFDFB), and buttons/CTAs should utilize the brand navy (#1F4E79) and teal (#5BA9A8).",
+    "Build an interactive booking form using Shadcn Input, Select, and Button components, maintaining the lightweight border-bottom style.",
+    "Do NOT use standard card components for services. Use visual bento grids with large imagery and elegant glassmorphism overlays for text.",
+    "Ensure the sticky header has a backdrop blur.",
+    "Implement a floating WhatsApp button in the bottom right corner.",
+    "Include a 'Testimonials' section and 'Before/After' gallery utilizing grid layouts.",
+    "Include `data-testid` attributes on all interactive elements (buttons, forms, links) using kebab-case role-based names (e.g., `data-testid='booking-submit-button'`)."
+  ]
+}
