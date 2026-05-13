@@ -1,4 +1,4 @@
-import { Instagram, Facebook, MapPin } from "lucide-react";
+import { Instagram, MapPin } from "lucide-react";
 import { CLINIC } from "../lib/constants";
 
 export const Footer = () => {
@@ -35,9 +35,6 @@ export const Footer = () => {
             <div className="mt-5 flex gap-3">
               <a aria-label="Instagram" href={CLINIC.social.instagram} target="_blank" rel="noreferrer" data-testid="footer-instagram-link" className="w-10 h-10 rounded-full bg-white/10 hover:bg-brand-teal flex items-center justify-center transition-colors">
                 <Instagram className="w-4 h-4" />
-              </a>
-              <a aria-label="Facebook" href={CLINIC.social.facebook} target="_blank" rel="noreferrer" data-testid="footer-facebook-link" className="w-10 h-10 rounded-full bg-white/10 hover:bg-brand-teal flex items-center justify-center transition-colors">
-                <Facebook className="w-4 h-4" />
               </a>
               <a aria-label="Google Maps" href={CLINIC.social.google} target="_blank" rel="noreferrer" data-testid="footer-google-link" className="w-10 h-10 rounded-full bg-white/10 hover:bg-brand-teal flex items-center justify-center transition-colors">
                 <MapPin className="w-4 h-4" />

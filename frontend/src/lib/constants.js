@@ -1,19 +1,22 @@
 export const CLINIC = {
   name: "Dazzle Dental & Cosmetic Studio",
   tagline: "Teeth · Skin · Hair",
-  phone: "+91 98765 43210",
-  whatsapp: "919876543210",
-  email: "hello@dazzledentalstudio.in",
-  address: "Mambakkam Main Road, Chennai, Tamil Nadu 600127, India",
+  phone: "+91 94426 45111",
+  phoneRaw: "+919442645111",
+  whatsapp: "919442645111",
+  email: "dazzledentalcosmetic@gmail.com",
+  address:
+    "First Floor, 76A/2, Kelambakkam–Vandalur Road, Melakottaiyur, Chennai – 600127, Tamil Nadu",
+  mapQuery:
+    "Dazzle Dental and Cosmetic Studio, Kelambakkam Vandalur Road, Melakottaiyur, Chennai 600127",
   hours: [
-    { day: "Mon – Sat", time: "10:00 AM – 9:00 PM" },
-    { day: "Sunday", time: "10:00 AM – 2:00 PM" },
+    { day: "All Days", time: "10:00 AM – 1:00 PM" },
+    { day: "All Days", time: "5:00 PM – 9:00 PM" },
   ],
   logo: "https://customer-assets.emergentagent.com/job_1f6d6be4-4280-4438-98e9-2b968b61d501/artifacts/96gf8srp_IMG_7906.JPG",
   social: {
-    instagram: "https://instagram.com",
-    facebook: "https://facebook.com",
-    google: "https://share.google/KclVl8YovVFYIAvbh",
+    instagram: "https://www.instagram.com/dazzledentalandcosmeticstudio/",
+    google: "https://share.google/PRNCci4CXp1uExMpm",
   },
 };
 
@@ -23,16 +26,26 @@ export const SERVICE_CATEGORIES = [
     title: "Teeth",
     overline: "Cosmetic & General Dentistry",
     description:
-      "From flawless smile makeovers to advanced implants — restore confidence with precision dentistry.",
+      "From flawless smile makeovers to implants, root canals and braces — full-spectrum dentistry under one roof.",
     image:
       "https://images.unsplash.com/photo-1758600434465-de17b9aef852?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1NTN8MHwxfHNlYXJjaHwyfHxzbWlsaW5nJTIwd29tYW4lMjBwZXJmZWN0JTIwdGVldGh8ZW58MHx8fHwxNzc4NDg1MzU1fDA&ixlib=rb-4.1.0&q=85",
     items: [
-      "Smile Designing & Veneers",
       "Teeth Whitening",
-      "Invisible Aligners",
+      "Veneers & Crowns",
       "Dental Implants",
-      "Root Canal Treatment",
-      "Braces & Orthodontics",
+      "Root Canals",
+      "Invisible Braces",
+      "Braces (Orthodontics)",
+      "Dentures & Bridges",
+      "Cosmetic Procedures",
+      "Teeth Reshaping",
+      "Teeth Cleaning",
+      "Fillings & Sealants",
+      "Extractions",
+      "Oral Surgery",
+      "Paediatric Dentistry",
+      "Emergency Care",
+      "Check-ups & X-ray",
     ],
   },
   {
@@ -40,16 +53,20 @@ export const SERVICE_CATEGORIES = [
     title: "Skin",
     overline: "Aesthetic Dermatology",
     description:
-      "Reveal radiant, healthy skin with medical-grade facials, peels, lasers and anti-ageing care.",
+      "Reveal radiant, healthy skin with medical-grade facials, peels and targeted treatments.",
     image:
       "https://images.pexels.com/photos/37229316/pexels-photo-37229316.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
     items: [
       "Hydra Facial",
-      "Chemical Peels",
-      "Laser Hair Removal",
-      "Pigmentation Treatment",
-      "Anti-Ageing & Botox",
-      "Acne Therapy",
+      "Chemical Peeling",
+      "Microdermabrasion",
+      "Acne & Scar Treatment",
+      "Dark Circle Removal",
+      "Melasma Treatment",
+      "Skin Tag & Wart Removal",
+      "Lip Peel",
+      "Microblading",
+      "Skin PRP",
     ],
   },
   {
@@ -57,46 +74,37 @@ export const SERVICE_CATEGORIES = [
     title: "Hair",
     overline: "Trichology & Restoration",
     description:
-      "Stronger, fuller hair through PRP therapy, scalp treatments and expert trichology consults.",
+      "Stronger, fuller hair through clinical PRP therapy and advanced trichology care.",
     image:
       "https://images.unsplash.com/photo-1764971590992-6cb000c079ac?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjAzMzJ8MHwxfHNlYXJjaHwxfHxiZWF1dGlmdWwlMjBoZWFsdGh5JTIwaGFpcnxlbnwwfHx8fDE3Nzg0ODUzNTV8MA&ixlib=rb-4.1.0&q=85",
     items: [
-      "PRP Hair Therapy",
-      "Hair Transplant Consult",
-      "Anti-Hair-Fall Treatment",
-      "Dandruff & Scalp Therapy",
+      "Hair PRP",
+      "Advanced PRP",
     ],
   },
 ];
 
 export const STATS = [
-  { value: "12K+", label: "Smiles Transformed" },
-  { value: "15+", label: "Years of Expertise" },
-  { value: "20+", label: "Specialist Doctors" },
   { value: "4.9★", label: "Google Rating" },
+  { value: "73+", label: "Patient Reviews" },
+  { value: "30+", label: "Treatments Offered" },
+  { value: "All Days", label: "Open · 10–1 & 5–9" },
 ];
 
 export const DOCTORS = [
   {
-    name: "Dr. Anika Reddy",
-    role: "Cosmetic Dentist · Smile Designer",
+    name: "Dr. Aishwarya Lakshmi",
+    credentials: "BDS · FMC · PGDCC",
+    role: "Cosmetic Dentist & Founder",
     image:
-      "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=900&q=80",
-    bio: "12+ years crafting natural, confidence-restoring smiles using digital smile design.",
-  },
-  {
-    name: "Dr. Karthik Iyer",
-    role: "Implantologist · Oral Surgeon",
-    image:
-      "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&w=900&q=80",
-    bio: "Specialist in single-day implants and full-mouth rehabilitation.",
-  },
-  {
-    name: "Dr. Sneha Varma",
-    role: "Aesthetic Dermatologist",
-    image:
-      "https://images.unsplash.com/photo-1594824476967-48c8b964273f?auto=format&fit=crop&w=900&q=80",
-    bio: "Board-certified dermatologist for skin glow, anti-ageing and laser care.",
+      "https://images.unsplash.com/photo-1594824476967-48c8b964273f?auto=format&fit=crop&w=1200&q=80",
+    bio: "Dr. Aishwarya leads Dazzle as the principal cosmetic dentist, blending aesthetic dentistry with skin & hair care. Her practice combines a Bachelor of Dental Surgery (BDS) with a Fellowship in Maxillofacial Cosmetology (FMC) and a Post-Graduate Diploma in Clinical Cosmetology (PGDCC) — bringing teeth, skin and hair expertise under one studio.",
+    highlights: [
+      "Smile Designing & Veneers",
+      "Cosmetic Dermatology",
+      "Hair & Skin PRP",
+      "Painless General Dentistry",
+    ],
   },
 ];
 

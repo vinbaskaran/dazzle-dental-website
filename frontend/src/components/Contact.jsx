@@ -50,7 +50,7 @@ export const Contact = () => {
 
             <div className="mt-10 space-y-6">
               <Info icon={MapPin} title="Studio Address" body={CLINIC.address} />
-              <Info icon={Phone} title="Call us" body={CLINIC.phone} href={`tel:${CLINIC.phone}`} testid="contact-phone" />
+              <Info icon={Phone} title="Call us" body={CLINIC.phone} href={`tel:${CLINIC.phoneRaw}`} testid="contact-phone" />
               <Info icon={Mail} title="Email" body={CLINIC.email} href={`mailto:${CLINIC.email}`} testid="contact-email" />
               <div className="flex gap-4">
                 <div className="w-11 h-11 rounded-2xl bg-brand-teal/15 text-brand-teal flex items-center justify-center flex-none">
@@ -70,7 +70,7 @@ export const Contact = () => {
             <div className="mt-10 rounded-3xl overflow-hidden border border-brand-navy/10 aspect-[16/10]" data-testid="contact-map">
               <iframe
                 title="Dazzle Dental & Cosmetic Studio location"
-                src="https://www.google.com/maps?q=Mambakkam%2C+Chennai&output=embed"
+                src={`https://www.google.com/maps?q=${encodeURIComponent(CLINIC.mapQuery)}&output=embed`}
                 width="100%"
                 height="100%"
                 loading="lazy"

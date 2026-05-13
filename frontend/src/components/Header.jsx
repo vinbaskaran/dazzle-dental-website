@@ -59,7 +59,7 @@ export const Header = () => {
 
         <div className="hidden lg:flex items-center gap-3">
           <a
-            href={`tel:${CLINIC.phone}`}
+            href={`tel:${CLINIC.phoneRaw}`}
             data-testid="header-call-link"
             className="flex items-center gap-2 text-sm text-brand-navy/80 hover:text-brand-navy"
           >
