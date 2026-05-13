@@ -85,8 +85,8 @@ export const SERVICE_CATEGORIES = [
 ];
 
 export const STATS = [
-  { value: "4.9★", label: "Google Rating" },
-  { value: "73+", label: "Patient Reviews" },
+  { value: "5★", label: "Google Rating" },
+  { value: "100+", label: "Patient Reviews" },
   { value: "30+", label: "Treatments Offered" },
   { value: "All Days", label: "Open · 10–1 & 5–9" },
 ];
@@ -97,7 +97,7 @@ export const DOCTORS = [
     credentials: "BDS · FMC · PGDCC",
     role: "Cosmetic Dentist & Founder",
     image:
-      "https://images.unsplash.com/photo-1594824476967-48c8b964273f?auto=format&fit=crop&w=1200&q=80",
+      "https://lh3.googleusercontent.com/gps-cs-s/APNQkAGBnkZLSjhHx82lKDpM6lZN1dPebjAlNmF2HnFwsje16LOmRqXzQ20TMhxd2Pcz5U5XucgRzOl3c3bJxPjmmCMXl4KodDtDYIrRbP1bq1aFluyq4l7dBMbsTxkCGI-w3L7_iIA=s680-w680-h510-rw",
     bio: "Dr. Aishwarya leads Dazzle as the principal cosmetic dentist, blending aesthetic dentistry with skin & hair care. Her practice combines a Bachelor of Dental Surgery (BDS) with a Fellowship in Maxillofacial Cosmetology (FMC) and a Post-Graduate Diploma in Clinical Cosmetology (PGDCC) — bringing teeth, skin and hair expertise under one studio.",
     highlights: [
       "Smile Designing & Veneers",
