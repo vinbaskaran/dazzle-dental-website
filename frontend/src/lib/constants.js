@@ -55,7 +55,7 @@ export const SERVICE_CATEGORIES = [
     description:
       "Reveal radiant, healthy skin with medical-grade facials, peels and targeted treatments.",
     image:
-      "https://images.pexels.com/photos/37229316/pexels-photo-37229316.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+      "https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?auto=format&fit=crop&w=940&q=80",
     items: [
       "Hydra Facial",
       "Chemical Peeling",
