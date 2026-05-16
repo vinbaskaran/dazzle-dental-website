@@ -1,4 +1,4 @@
-from fastapi import FastAPI, APIRouter, HTTPException
+from fastapi import FastAPI, APIRouter, HTTPException, BackgroundTasks
 from dotenv import load_dotenv
 from starlette.middleware.cors import CORSMiddleware
 from motor.motor_asyncio import AsyncIOMotorClient
@@ -13,6 +13,9 @@ from datetime import datetime, timezone
 
 ROOT_DIR = Path(__file__).parent
 load_dotenv(ROOT_DIR / '.env')
+
+# Email notification helpers (loaded AFTER load_dotenv so the API key is picked up)
+from email_service import send_booking_notification, send_contact_notification  # noqa: E402
 
 # MongoDB connection
 mongo_url = os.environ['MONGO_URL']
@@ -103,13 +106,15 @@ async def get_status_checks():
 
 
 @api_router.post("/appointments", response_model=Appointment, status_code=201)
-async def create_appointment(payload: AppointmentCreate):
+async def create_appointment(payload: AppointmentCreate, background_tasks: BackgroundTasks):
     if payload.service_category not in {"Teeth", "Skin", "Hair"}:
         raise HTTPException(status_code=400, detail="service_category must be Teeth, Skin, or Hair")
     obj = Appointment(**payload.model_dump())
     doc = obj.model_dump()
     doc['created_at'] = doc['created_at'].isoformat()
     await db.appointments.insert_one(doc)
+    # Fire-and-forget email to the clinic; never blocks the API response.
+    background_tasks.add_task(send_booking_notification, obj.model_dump())
     return obj
 
 
@@ -123,11 +128,12 @@ async def list_appointments():
 
 
 @api_router.post("/contact", response_model=ContactMessage, status_code=201)
-async def create_contact_message(payload: ContactMessageCreate):
+async def create_contact_message(payload: ContactMessageCreate, background_tasks: BackgroundTasks):
     obj = ContactMessage(**payload.model_dump())
     doc = obj.model_dump()
     doc['created_at'] = doc['created_at'].isoformat()
     await db.contact_messages.insert_one(doc)
+    background_tasks.add_task(send_contact_notification, obj.model_dump())
     return obj
 
 
