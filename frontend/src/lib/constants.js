@@ -55,7 +55,7 @@ export const SERVICE_CATEGORIES = [
     description:
       "Reveal radiant, healthy skin with medical-grade facials, peels and targeted treatments.",
     image:
-      "https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?auto=format&fit=crop&w=940&q=80",
+      "https://images.everydayhealth.com/images/skin-beauty/what-is-a-hydrafacial-722x406.jpg?sfvrsn=86f24a91_5",
     items: [
       "Hydra Facial",
       "Chemical Peeling",
