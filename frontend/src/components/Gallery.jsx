@@ -31,7 +31,7 @@ export const Gallery = () => {
               <div className="relative aspect-[4/3] overflow-hidden rounded-2xl bg-white/10">
                 <img
                   src={g.image}
-                  alt={`${g.label} before & after`}
+                  alt={`${g.label} before & after — real patient transformation at Dazzle Dental & Cosmetic Studio, Chennai`}
                   loading="lazy"
                   className="w-full h-full object-cover transition-transform duration-[1.2s] ease-out group-hover:scale-[1.04]"
                 />

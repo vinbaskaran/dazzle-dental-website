@@ -13,6 +13,7 @@ import { BookingForm } from "./components/BookingForm";
 import { Contact } from "./components/Contact";
 import { Footer } from "./components/Footer";
 import { WhatsAppButton } from "./components/WhatsAppButton";
+import { FAQ } from "./components/FAQ";
 
 const Landing = () => (
   <div data-testid="landing-page" className="min-h-screen bg-brand-light text-brand-navy">
@@ -25,6 +26,7 @@ const Landing = () => (
       <Gallery />
       <Testimonials />
       <BookingForm />
+      <FAQ />
       <Contact />
     </main>
     <Footer />

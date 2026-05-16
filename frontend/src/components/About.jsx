@@ -28,7 +28,7 @@ export const About = () => {
             <p className="mt-5 text-slate-600 leading-relaxed">
               Born from a simple idea — that looking after your teeth, skin and hair should feel as good as a spa visit
               and as precise as a hospital. Dazzle brings together specialists, technology and warmth, all under one roof
-              in Mambakkam.
+              in <strong className="text-brand-navy font-medium">Melakottaiyur, Chennai</strong> — serving Mambakkam, Kelambakkam and Vandalur.
             </p>
 
             <div className="mt-10 grid grid-cols-2 gap-6">

@@ -32,7 +32,7 @@ export const Services = () => {
             >
               <img
                 src={cat.image}
-                alt={cat.title}
+                alt={`${cat.title} treatments at Dazzle Dental & Cosmetic Studio, Melakottaiyur — ${cat.overline}`}
                 className="absolute inset-0 w-full h-full object-cover transition-transform duration-[1.4s] ease-out group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-brand-navy/90 via-brand-navy/40 to-transparent" />

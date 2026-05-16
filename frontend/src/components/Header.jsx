@@ -6,9 +6,10 @@ import { CLINIC } from "../lib/constants";
 const NAV = [
   { label: "Services", href: "#services" },
   { label: "About", href: "#about" },
-  { label: "Doctors", href: "#doctors" },
+  { label: "Doctor", href: "#doctors" },
   { label: "Results", href: "#gallery" },
   { label: "Reviews", href: "#testimonials" },
+  { label: "FAQ", href: "#faq" },
   { label: "Contact", href: "#contact" },
 ];
 

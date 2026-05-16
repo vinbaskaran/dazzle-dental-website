@@ -32,7 +32,7 @@ export const Doctors = () => {
             <div className="relative aspect-[4/5] overflow-hidden rounded-[36px] shadow-[0_30px_80px_-20px_rgba(31,78,121,0.35)] group">
               <img
                 src={doctor.image}
-                alt={doctor.name}
+                alt={`${doctor.name} — ${doctor.credentials}, Chief Dentist at Dazzle Dental & Cosmetic Studio, Chennai`}
                 className="w-full h-full object-cover transition-transform duration-[1.2s] group-hover:scale-105"
               />
               <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-brand-navy/70 to-transparent" />

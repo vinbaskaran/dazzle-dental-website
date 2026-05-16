@@ -38,8 +38,17 @@ export const Hero = () => {
           <motion.p
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.9, delay: 0.18, ease: "easeOut" }}
+            className="mt-4 font-sans text-sm tracking-wide text-brand-navy/70"
+          >
+            <strong className="font-medium">Best dental clinic in Melakottaiyur, Chennai</strong> · Cosmetic Dentistry · Skin · Hair
+          </motion.p>
+
+          <motion.p
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, delay: 0.25, ease: "easeOut" }}
-            className="mt-7 font-sans text-base md:text-lg text-slate-600 leading-relaxed max-w-xl"
+            className="mt-5 font-sans text-base md:text-lg text-slate-600 leading-relaxed max-w-xl"
           >
             Dazzle is where modern dentistry meets aesthetic cosmetology and trichology — a single studio in Chennai
             crafting confident, camera-ready you, from teeth to skin to hair.
@@ -101,7 +110,7 @@ export const Hero = () => {
           <div className="relative aspect-[4/5] rounded-[36px] overflow-hidden shadow-[0_30px_80px_-20px_rgba(31,78,121,0.35)]">
             <img
               src="https://images.pexels.com/photos/5355921/pexels-photo-5355921.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=900&w=720"
-              alt="Modern dental studio"
+              alt="Dazzle Dental & Cosmetic Studio — modern dental clinic interior in Melakottaiyur, Chennai"
               className="w-full h-full object-cover"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-brand-navy/40 via-transparent to-transparent" />
