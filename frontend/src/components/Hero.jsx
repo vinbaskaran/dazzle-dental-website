@@ -41,7 +41,7 @@ export const Hero = () => {
             transition={{ duration: 0.9, delay: 0.25, ease: "easeOut" }}
             className="mt-7 font-sans text-base md:text-lg text-slate-600 leading-relaxed max-w-xl"
           >
-            Dazzle is where modern dentistry meets aesthetic dermatology and trichology — a single studio in Chennai
+            Dazzle is where modern dentistry meets aesthetic cosmetology and trichology — a single studio in Chennai
             crafting confident, camera-ready you, from teeth to skin to hair.
           </motion.p>
 

@@ -51,7 +51,7 @@ export const SERVICE_CATEGORIES = [
   {
     id: "Skin",
     title: "Skin",
-    overline: "Aesthetic Dermatology",
+    overline: "Aesthetic Cosmetology",
     description:
       "Reveal radiant, healthy skin with medical-grade facials, peels and targeted treatments.",
     image:
@@ -101,7 +101,7 @@ export const DOCTORS = [
     bio: "Dr. Aishwarya leads Dazzle as the chief dentist, blending aesthetic dentistry with skin & hair care. Her practice combines a Bachelor of Dental Surgery (BDS) with a Fellowship in Maxillofacial Cosmetology (FMC) and a Post-Graduate Diploma in Clinical Cosmetology (PGDCC) — bringing teeth, skin and hair expertise under one studio.",
     highlights: [
       "Smile Designing & Veneers",
-      "Cosmetic Dermatology",
+      "Cosmetology",
       "Hair & Skin PRP",
       "Painless General Dentistry",
     ],
