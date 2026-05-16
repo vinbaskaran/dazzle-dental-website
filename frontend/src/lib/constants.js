@@ -128,28 +128,46 @@ export const GALLERY = [
 
 export const TESTIMONIALS = [
   {
-    name: "Priya R.",
-    treatment: "Smile Designing",
+    name: "Mukesh Thiru",
+    treatment: "Root Canal Treatment",
+    time: "16 hours ago",
     rating: 5,
-    text: "I was nervous about veneers but the Dazzle team walked me through every step. The result looks completely natural — I can't stop smiling.",
+    text: "I recently visited this dental hospital for a root canal treatment, and my experience was very good. The doctors were professional, patient, and explained the procedure clearly, which made me feel comfortable throughout the treatment, and the hospital maintained good hygiene and cleanliness. The treatment was smooth and relatively painless. I truly appreciate the care and attention I received and would recommend this hospital to anyone looking for quality dental care.",
   },
   {
-    name: "Arjun M.",
-    treatment: "Dental Implants",
+    name: "Sri Sai Electrics",
+    treatment: "Dental Care",
+    time: "18 weeks ago",
     rating: 5,
-    text: "Painless implant procedure with zero downtime. The clinic feels like a spa, not a dental office. Highly recommend Dr. Karthik.",
+    text: "Had a great experience at this dental clinic. The doctors were very friendly and explained the treatment clearly, which made me feel comfortable throughout. The clinic was clean and well-maintained, and the staff were polite and professional. Appointment timings were followed properly with minimal waiting time. The treatment results were excellent and the charges were reasonable. Highly recommended for quality dental care.",
   },
   {
-    name: "Lakshmi V.",
-    treatment: "Hydra Facial + PRP",
+    name: "Rahini Moorthy",
+    treatment: "General Treatment",
+    time: "27 weeks ago",
     rating: 5,
-    text: "My skin glows like never before, and my hairfall has reduced dramatically after 3 PRP sessions. Truly a one-stop studio.",
+    text: "The doctor was very kind and patient throughout the treatment. The service was excellent, and the clinic was clean and comfortable. She clearly explained every step, which made me feel relaxed and confident.",
   },
   {
-    name: "Rahul S.",
-    treatment: "Invisible Aligners",
+    name: "SURENDAR Rajendiran",
+    treatment: "Teeth Cleaning",
+    time: "36 weeks ago",
     rating: 5,
-    text: "Got my teeth straightened without anyone noticing. The 3D smile preview before starting was such a wow moment.",
+    text: "This was my first visit to this clinic, and I had a great experience. The doctor explained everything very clearly and in detail about the procedures. I got my teeth cleaned here, and she was very polite and made me feel comfortable throughout.",
+  },
+  {
+    name: "Ramkumar A",
+    treatment: "Wisdom Tooth Extraction",
+    time: "38 weeks ago",
+    rating: 5,
+    text: "Highly recommended for dental care. Doctor explained clearly and removed the wisdom tooth. The surgery has been done with no pain. She is very friendly and attentive too.",
+  },
+  {
+    name: "Sriram PKNSS",
+    treatment: "Chemical Peeling",
+    time: "26 Jan 2025 · Local Guide",
+    rating: 5,
+    text: "I recently got a chemical peeling treatment at Dazzle Clinic, and I'm thrilled with the results even though it's a new one! After the treatment, my skin felt refreshed, and I noticed an immediate improvement in texture and glow. Over the next few days, my skin continued to clear up, and the dark spots started fading. I'm extremely happy with the outcome and will definitely return for more treatments. Highly recommend Dazzle Clinic!",
   },
 ];
 
