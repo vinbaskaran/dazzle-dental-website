@@ -110,19 +110,28 @@ export const DOCTORS = [
 
 export const GALLERY = [
   {
-    before: "https://lh3.googleusercontent.com/C1FS5h-St_ZH2f-02RBr4niHC7rsyRt0SSna_FqpzpFHCPe8G3na8WtD8Dph6YLBncuzQzVGQS4meez1=w3425",
-    after: "https://lh3.googleusercontent.com/Ma3E4Mk3jbebvZnDtr1wf9iQeDOHEH8DBNq_tk1kFu9Tb_mQChjcr5MadCh294bpE5P0zViVfw5AReEI=w3425",
+    image: "https://lh3.googleusercontent.com/C1FS5h-St_ZH2f-02RBr4niHC7rsyRt0SSna_FqpzpFHCPe8G3na8WtD8Dph6YLBncuzQzVGQS4meez1=w3425",
     label: "Smile Makeover",
   },
   {
-    before: "https://lh3.googleusercontent.com/_K5qvBDKJooboyVV_dnVPR6QnYiT3pACHkk_sxQ49MnusNaGbDL-iH7pLrnhs7XPKa1D8XDqQ_xMKsx6=w3425",
-    after: "https://lh3.googleusercontent.com/0CywAWQMjZXzCH0hABEXLI4VlgpZo4o3qWHPiSWfHIJzCbjuAGZjGJWYdBo76q1hLCxBWoi4Hd8CiFiO=w3425",
-    label: "Cosmetic Dentistry",
+    image: "https://lh3.googleusercontent.com/Ma3E4Mk3jbebvZnDtr1wf9iQeDOHEH8DBNq_tk1kFu9Tb_mQChjcr5MadCh294bpE5P0zViVfw5AReEI=w3425",
+    label: "Smile Makeover",
   },
   {
-    before: "https://lh3.googleusercontent.com/qcTQH4UwQWIPvQFBTVCNjfpCt1XGzZm44fRzvb8Y4RuFtdF78v9Zv9k4a52kjjoOV3NDt12XG8roUjKyxA=w3425",
-    after: "https://lh3.googleusercontent.com/_H2r-dd4r85XoqE21ZYsav9GV_HWZKN4OSWbRRCSH_mosOhJelrpvEdEoGRyka-0wlpWolitr8iFkGHgSg=w3425",
-    label: "Aesthetic Transformation",
+    image: "https://lh3.googleusercontent.com/_K5qvBDKJooboyVV_dnVPR6QnYiT3pACHkk_sxQ49MnusNaGbDL-iH7pLrnhs7XPKa1D8XDqQ_xMKsx6=w3425",
+    label: "Smile Makeover",
+  },
+  {
+    image: "https://lh3.googleusercontent.com/0CywAWQMjZXzCH0hABEXLI4VlgpZo4o3qWHPiSWfHIJzCbjuAGZjGJWYdBo76q1hLCxBWoi4Hd8CiFiO=w3425",
+    label: "Hydra Facial",
+  },
+  {
+    image: "https://lh3.googleusercontent.com/qcTQH4UwQWIPvQFBTVCNjfpCt1XGzZm44fRzvb8Y4RuFtdF78v9Zv9k4a52kjjoOV3NDt12XG8roUjKyxA=w3425",
+    label: "Dental Bridge",
+  },
+  {
+    image: "https://lh3.googleusercontent.com/_H2r-dd4r85XoqE21ZYsav9GV_HWZKN4OSWbRRCSH_mosOhJelrpvEdEoGRyka-0wlpWolitr8iFkGHgSg=w3425",
+    label: "Teeth Cleaning",
   },
 ];
 
