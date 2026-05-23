@@ -38,7 +38,7 @@ export const Header = () => {
     >
       <div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-16 flex items-center justify-between h-20">
         <a href="#home" data-testid="header-logo-link" className="flex items-center gap-3">
-          <img src={CLINIC.logo} alt="Dazzle" className="h-12 w-12 rounded-full object-cover ring-1 ring-brand-navy/10" />
+          <img src={CLINIC.logo} alt="Dazzle Dental & Cosmetic Studio" className="h-12 w-12 rounded-full object-cover flex-shrink-0" />
           <div className="leading-tight hidden sm:block">
             <div className="font-serif text-xl text-brand-navy tracking-tight">Dazzle</div>
             <div className="font-sans text-[10px] tracking-[0.25em] uppercase text-brand-teal">Dental · Cosmetic</div>

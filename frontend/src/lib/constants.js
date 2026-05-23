@@ -13,7 +13,7 @@ export const CLINIC = {
     { day: "All Days", time: "10:00 AM – 1:00 PM" },
     { day: "All Days", time: "5:00 PM – 9:00 PM" },
   ],
-  logo: "https://customer-assets.emergentagent.com/job_1f6d6be4-4280-4438-98e9-2b968b61d501/artifacts/96gf8srp_IMG_7906.JPG",
+  logo: "/logo.PNG",
   social: {
     instagram: "https://www.instagram.com/dazzledentalandcosmeticstudio/",
     google: "https://share.google/PRNCci4CXp1uExMpm",
