@@ -33,6 +33,7 @@ export const Doctors = () => {
               <img
                 src={doctor.image}
                 alt={`${doctor.name} — ${doctor.credentials}, Chief Dentist at Dazzle Dental & Cosmetic Studio, Chennai`}
+                loading="lazy"
                 className="w-full h-full object-cover transition-transform duration-[1.2s] group-hover:scale-105"
               />
               <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-brand-navy/70 to-transparent" />

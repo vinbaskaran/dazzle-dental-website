@@ -111,6 +111,8 @@ export const Hero = () => {
             <img
               src="https://images.pexels.com/photos/5355921/pexels-photo-5355921.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=900&w=720"
               alt="Dazzle Dental & Cosmetic Studio — modern dental clinic interior in Melakottaiyur, Chennai"
+              loading="eager"
+              fetchpriority="high"
               className="w-full h-full object-cover"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-brand-navy/40 via-transparent to-transparent" />

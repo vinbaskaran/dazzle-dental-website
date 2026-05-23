@@ -14,7 +14,7 @@ export const Testimonials = () => {
             </h2>
           </div>
           <a
-            href="https://share.google/PRNCci4CXp1uExMpm"
+            href="https://www.google.com/maps/search/?api=1&query=Dazzle+Dental+%26+Cosmetic+Studio+Melakottaiyur+Chennai"
             target="_blank"
             rel="noreferrer"
             data-testid="testimonials-google-link"
