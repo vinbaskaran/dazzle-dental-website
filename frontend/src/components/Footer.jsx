@@ -8,7 +8,7 @@ export const Footer = () => {
         <div className="grid md:grid-cols-12 gap-10 pb-12 border-b border-white/10">
           <div className="md:col-span-5">
             <div className="flex items-center gap-3">
-              <img src={CLINIC.logo} alt="Dazzle Dental & Cosmetic Studio" className="w-12 h-12 rounded-full object-cover flex-shrink-0 ring-1 ring-white/20" />
+              <img src={CLINIC.logo} alt="Dazzle Dental & Cosmetic Studio" className="w-16 h-16 rounded-full object-cover flex-shrink-0 ring-1 ring-white/20" />
               <div>
                 <div className="font-serif text-2xl">Dazzle</div>
                 <div className="text-[10px] tracking-[0.3em] uppercase text-brand-teal-soft">Dental · Cosmetic Studio</div>
