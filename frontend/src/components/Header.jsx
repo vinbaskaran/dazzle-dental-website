@@ -30,15 +30,19 @@ export const Header = () => {
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
       data-testid="site-header"
-      className={`fixed top-0 inset-x-0 z-40 transition-all duration-300 ${
-        scrolled
-          ? "backdrop-blur-xl bg-brand-light/85 border-b border-brand-navy/10"
-          : "bg-transparent"
-      }`}
+      className="fixed top-0 inset-x-0 z-40"
     >
-      <div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-16 flex items-center justify-between h-20">
+      {/* Backdrop layer is separate from content so backdrop-blur never composites the logo */}
+      <div
+        className={`absolute inset-0 transition-all duration-300 pointer-events-none ${
+          scrolled
+            ? "backdrop-blur-xl bg-brand-light/85 border-b border-brand-navy/10"
+            : "bg-transparent"
+        }`}
+      />
+      <div className="relative max-w-7xl mx-auto px-6 md:px-10 lg:px-16 flex items-center justify-between h-20">
         <a href="#home" data-testid="header-logo-link" className="flex items-center gap-3">
-          <div className="h-16 w-16 rounded-full bg-white flex-shrink-0 overflow-hidden shadow-sm ring-1 ring-brand-navy/10">
+          <div className="h-16 w-16 rounded-full bg-white flex-shrink-0 overflow-hidden shadow-sm ring-1 ring-brand-navy/10 [transform:translateZ(0)]">
               <img src={CLINIC.logo} alt="Dazzle Dental & Cosmetic Studio" className="w-full h-full object-cover" />
             </div>
           <div className="leading-tight hidden sm:block">
@@ -89,7 +93,7 @@ export const Header = () => {
       </div>
 
       {open && (
-        <div className="lg:hidden bg-brand-light border-t border-brand-navy/10" data-testid="mobile-menu">
+        <div className="relative lg:hidden bg-brand-light border-t border-brand-navy/10" data-testid="mobile-menu">
           <div className="px-6 py-6 flex flex-col gap-5">
             {NAV.map((item) => (
               <a
