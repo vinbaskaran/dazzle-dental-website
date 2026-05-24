@@ -25,6 +25,8 @@ export const SERVICE_CATEGORIES = [
     id: "Teeth",
     title: "Teeth",
     overline: "Cosmetic & General Dentistry",
+    learnMoreUrl: "/root-canal",
+    learnMoreLabel: "Root Canal Guide",
     description:
       "From flawless smile makeovers to implants, root canals and braces — full-spectrum dentistry under one roof.",
     image:

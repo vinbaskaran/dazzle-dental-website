@@ -46,8 +46,8 @@ export const Header = () => {
               <img src={CLINIC.logo} alt="Dazzle Dental & Cosmetic Studio" className="w-full h-full object-cover" />
             </div>
           <div className="leading-tight hidden sm:block">
-            <div className="font-serif text-xl text-brand-navy tracking-tight">Dazzle</div>
-            <div className="font-sans text-[10px] tracking-[0.25em] uppercase text-brand-teal">Dental · Cosmetic</div>
+            <div className="font-serif text-xl font-bold text-brand-navy tracking-tight">Dazzle</div>
+            <div className="font-sans text-[9px] tracking-[0.22em] uppercase text-brand-navy/60">Dental &amp; Cosmetic Studio</div>
           </div>
         </a>
 

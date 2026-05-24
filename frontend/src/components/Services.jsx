@@ -51,13 +51,24 @@ export const Services = () => {
                   ))}
                 </ul>
 
-                <a
-                  href="#booking"
-                  data-testid={`service-${cat.id.toLowerCase()}-book-link`}
-                  className="mt-7 self-start inline-flex items-center gap-2 bg-white text-brand-navy px-6 py-3 rounded-full font-sans tracking-[0.18em] uppercase text-[11px] hover:bg-brand-teal hover:text-white transition-colors"
-                >
-                  Book {cat.title} Consult →
-                </a>
+                <div className="mt-7 flex flex-wrap gap-3">
+                  <a
+                    href="#booking"
+                    data-testid={`service-${cat.id.toLowerCase()}-book-link`}
+                    className="self-start inline-flex items-center gap-2 bg-white text-brand-navy px-6 py-3 rounded-full font-sans tracking-[0.18em] uppercase text-[11px] hover:bg-brand-teal hover:text-white transition-colors"
+                  >
+                    Book {cat.title} Consult →
+                  </a>
+                  {cat.learnMoreUrl && (
+                    <a
+                      href={cat.learnMoreUrl}
+                      data-testid={`service-${cat.id.toLowerCase()}-learn-more-link`}
+                      className="self-start inline-flex items-center gap-2 border border-white/50 text-white/90 px-6 py-3 rounded-full font-sans tracking-[0.18em] uppercase text-[11px] hover:border-white hover:text-white transition-colors"
+                    >
+                      {cat.learnMoreLabel} →
+                    </a>
+                  )}
+                </div>
               </div>
             </motion.article>
           ))}
