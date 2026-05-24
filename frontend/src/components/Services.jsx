@@ -68,6 +68,15 @@ export const Services = () => {
                       {cat.learnMoreLabel} →
                     </a>
                   )}
+                  {cat.learnMoreUrl2 && (
+                    <a
+                      href={cat.learnMoreUrl2}
+                      data-testid={`service-${cat.id.toLowerCase()}-learn-more-link-2`}
+                      className="self-start inline-flex items-center gap-2 border border-white/50 text-white/90 px-6 py-3 rounded-full font-sans tracking-[0.18em] uppercase text-[11px] hover:border-white hover:text-white transition-colors"
+                    >
+                      {cat.learnMoreLabel2} →
+                    </a>
+                  )}
                 </div>
               </div>
             </motion.article>

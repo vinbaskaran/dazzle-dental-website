@@ -27,6 +27,8 @@ export const SERVICE_CATEGORIES = [
     overline: "Cosmetic & General Dentistry",
     learnMoreUrl: "/root-canal",
     learnMoreLabel: "Root Canal Guide",
+    learnMoreUrl2: "/dental-implants",
+    learnMoreLabel2: "Implants Guide",
     description:
       "From flawless smile makeovers to implants, root canals and braces — full-spectrum dentistry under one roof.",
     image:
