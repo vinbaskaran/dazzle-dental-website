@@ -29,6 +29,8 @@ export const SERVICE_CATEGORIES = [
     learnMoreLabel: "Root Canal Guide",
     learnMoreUrl2: "/dental-implants",
     learnMoreLabel2: "Implants Guide",
+    learnMoreUrl3: "/braces-aligners",
+    learnMoreLabel3: "Braces & Aligners Guide",
     description:
       "From flawless smile makeovers to implants, root canals and braces — full-spectrum dentistry under one roof.",
     image:
