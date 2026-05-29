@@ -36,7 +36,7 @@ export const Gallery = () => {
                   className="w-full h-full object-cover transition-transform duration-[1.2s] ease-out group-hover:scale-[1.04]"
                 />
                 <span className="absolute top-3 left-3 bg-white text-brand-navy text-[10px] tracking-widest uppercase px-2.5 py-1 rounded-full shadow">
-                  Before · After
+                  {g.label}
                 </span>
               </div>
               <div className="mt-4 px-2 pb-2 flex items-center justify-between">

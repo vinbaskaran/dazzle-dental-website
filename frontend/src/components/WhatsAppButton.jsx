@@ -8,7 +8,7 @@ export const WhatsAppButton = () => (
     rel="noreferrer"
     aria-label="Chat on WhatsApp"
     data-testid="whatsapp-floating-button"
-    className="fixed bottom-6 right-6 z-40 bg-[#25D366] hover:scale-110 transition-transform text-white p-4 rounded-full shadow-2xl flex items-center justify-center"
+    className="fixed bottom-[72px] lg:bottom-6 right-6 z-40 bg-[#25D366] hover:scale-110 transition-transform text-white p-4 rounded-full shadow-2xl flex items-center justify-center"
   >
     <MessageCircle className="w-6 h-6" />
   </a>

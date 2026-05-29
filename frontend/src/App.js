@@ -13,10 +13,11 @@ import { BookingForm } from "./components/BookingForm";
 import { Contact } from "./components/Contact";
 import { Footer } from "./components/Footer";
 import { WhatsAppButton } from "./components/WhatsAppButton";
+import { MobileStickyCTA } from "./components/MobileStickyCTA";
 import { FAQ } from "./components/FAQ";
 
 const Landing = () => (
-  <div data-testid="landing-page" className="min-h-screen bg-brand-light text-brand-navy">
+  <div data-testid="landing-page" className="min-h-screen bg-brand-light text-brand-navy pb-[57px] lg:pb-0">
     <Header />
     <main>
       <Hero />
@@ -31,6 +32,7 @@ const Landing = () => (
     </main>
     <Footer />
     <WhatsAppButton />
+    <MobileStickyCTA />
     <Toaster
       position="top-center"
       richColors
