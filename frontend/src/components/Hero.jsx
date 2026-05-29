@@ -84,10 +84,10 @@ export const Hero = () => {
             className="mt-12 flex items-center gap-6"
           >
             <div className="flex -space-x-3">
-              {["1559839734-2b71ea197ec2", "1594824476967-48c8b964273f", "1612349317150-e413f6a5b16d"].map((id) => (
+              {["/avatar-1.jpg", "/avatar-2.jpg", "/avatar-3.jpg"].map((src) => (
                 <img
-                  key={id}
-                  src={`https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=120&q=80`}
+                  key={src}
+                  src={src}
                   alt=""
                   className="w-10 h-10 rounded-full ring-2 ring-brand-light object-cover"
                 />
@@ -109,7 +109,7 @@ export const Hero = () => {
         >
           <div className="relative aspect-[4/5] rounded-[36px] overflow-hidden shadow-[0_30px_80px_-20px_rgba(31,78,121,0.35)]">
             <img
-              src="https://images.pexels.com/photos/5355921/pexels-photo-5355921.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=900&w=720"
+              src="/hero-main.jpg"
               alt="Dazzle Dental & Cosmetic Studio — modern dental clinic interior in Melakottaiyur, Chennai"
               loading="eager"
               fetchpriority="high"
