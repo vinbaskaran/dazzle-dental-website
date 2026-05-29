@@ -51,7 +51,7 @@ export const Services = () => {
                   ))}
                 </ul>
 
-                <div className="mt-7 flex flex-wrap gap-3">
+                <div className="mt-7">
                   <a
                     href="#booking"
                     data-testid={`service-${cat.id.toLowerCase()}-book-link`}
@@ -59,21 +59,48 @@ export const Services = () => {
                   >
                     Book {cat.title} Consult →
                   </a>
-                  {cat.learnMoreLinks && cat.learnMoreLinks.map((link, i) => (
-                    <a
-                      key={link.url}
-                      href={link.url}
-                      data-testid={`service-${cat.id.toLowerCase()}-learn-more-link-${i + 1}`}
-                      className="self-start inline-flex items-center gap-2 border border-white/50 text-white/90 px-6 py-3 rounded-full font-sans tracking-[0.18em] uppercase text-[11px] hover:border-white hover:text-white transition-colors"
-                    >
-                      {link.label} →
-                    </a>
-                  ))}
                 </div>
               </div>
             </motion.article>
           ))}
         </div>
+
+        {/* Treatment Guides */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.7, ease: "easeOut" }}
+          className="mt-16 border-t border-border pt-12"
+        >
+          <div className="flex items-center gap-3 mb-8">
+            <div className="font-sans text-[11px] tracking-[0.3em] uppercase text-brand-teal">Treatment Guides</div>
+            <div className="flex-1 h-px bg-border" />
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 lg:gap-12">
+            {SERVICE_CATEGORIES.filter(cat => cat.learnMoreLinks?.length).map((cat) => (
+              <div key={cat.id}>
+                <div className="font-serif text-lg text-brand-navy mb-4">{cat.title}</div>
+                <ul className="space-y-2">
+                  {cat.learnMoreLinks.map((link) => (
+                    <li key={link.url}>
+                      <a
+                        href={link.url}
+                        className="group flex items-center gap-2 text-[13px] font-sans text-slate-600 hover:text-brand-teal transition-colors"
+                      >
+                        <span className="w-4 h-px bg-slate-300 group-hover:bg-brand-teal group-hover:w-5 transition-all duration-200 flex-none" />
+                        {link.label.replace(" Guide", "")}
+                        <span className="ml-auto text-slate-300 group-hover:text-brand-teal transition-colors text-xs">→</span>
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </motion.div>
+
       </div>
     </section>
   );
