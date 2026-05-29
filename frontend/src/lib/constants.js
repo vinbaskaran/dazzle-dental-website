@@ -25,12 +25,14 @@ export const SERVICE_CATEGORIES = [
     id: "Teeth",
     title: "Teeth",
     overline: "Cosmetic & General Dentistry",
-    learnMoreUrl: "/root-canal",
-    learnMoreLabel: "Root Canal Guide",
-    learnMoreUrl2: "/dental-implants",
-    learnMoreLabel2: "Implants Guide",
-    learnMoreUrl3: "/braces-aligners",
-    learnMoreLabel3: "Braces & Aligners Guide",
+    learnMoreLinks: [
+      { url: "/dental-implants", label: "Implants Guide" },
+      { url: "/root-canal", label: "Root Canal Guide" },
+      { url: "/braces-aligners", label: "Braces & Aligners Guide" },
+      { url: "/teeth-whitening", label: "Teeth Whitening Guide" },
+      { url: "/smile-makeover", label: "Smile Makeover Guide" },
+      { url: "/wisdom-tooth-extraction", label: "Wisdom Tooth Guide" },
+    ],
     description:
       "From flawless smile makeovers to implants, root canals and braces — full-spectrum dentistry under one roof.",
     image:
@@ -58,6 +60,9 @@ export const SERVICE_CATEGORIES = [
     id: "Skin",
     title: "Skin",
     overline: "Aesthetic Cosmetology",
+    learnMoreLinks: [
+      { url: "/hydra-facial", label: "Hydra Facial Guide" },
+    ],
     description:
       "Reveal radiant, healthy skin with medical-grade facials, peels and targeted treatments.",
     image:
@@ -79,6 +84,9 @@ export const SERVICE_CATEGORIES = [
     id: "Hair",
     title: "Hair",
     overline: "Trichology & Restoration",
+    learnMoreLinks: [
+      { url: "/hair-prp", label: "Hair PRP Guide" },
+    ],
     description:
       "Stronger, fuller hair through clinical PRP therapy and advanced trichology care.",
     image:
