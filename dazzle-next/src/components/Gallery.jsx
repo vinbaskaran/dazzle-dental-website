@@ -35,7 +35,7 @@ export const Gallery = () => {
                   src={g.image}
                   alt={`${g.label} before & after — real patient transformation at Dazzle Dental & Cosmetic Studio, Chennai`}
                   loading="lazy"
-                  className="w-full h-full object-cover transition-transform duration-[1.2s] ease-out group-hover:scale-[1.04]"
+                  className="w-full h-full object-cover transition-transform [transition-duration:1.2s] ease-out group-hover:scale-[1.04]"
                 />
                 <span className="absolute top-3 left-3 bg-white text-brand-navy text-[10px] tracking-widest uppercase px-2.5 py-1 rounded-full shadow">
                   {g.label}
