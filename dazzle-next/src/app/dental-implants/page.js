@@ -1,37 +1,29 @@
-import { Header } from "@/components/Header";
-import { Footer } from "@/components/Footer";
-import { WhatsAppButton } from "@/components/WhatsAppButton";
-import { MobileStickyCTA } from "@/components/MobileStickyCTA";
+import { ServiceLanding } from "@/components/ServiceLanding";
+import { SERVICES } from "@/app/services-content";
+
+const service = SERVICES["dental-implants"];
 
 export const metadata = {
-  title: "Dental Implants in Chennai | Dazzle Dental & Cosmetic Studio",
-  description:
-    "Dental Implants at Dazzle Dental & Cosmetic Studio, Melakottaiyur, Chennai. Expert care, transparent pricing, 0% EMI. Book a free consultation.",
+  title: service.title,
+  description: service.description,
   alternates: { canonical: "/dental-implants" },
+  openGraph: {
+    type: "website",
+    locale: "en_IN",
+    siteName: "Dazzle Dental & Cosmetic Studio",
+    title: service.title,
+    description: service.description,
+    url: "https://www.dazzledentalstudio.in/dental-implants",
+    images: [{ url: service.ogImage, width: 1200, height: 630, alt: service.h1 }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: service.title,
+    description: service.description,
+    images: [service.ogImage],
+  },
 };
 
 export default function Page() {
-  return (
-    <div className="App">
-      <div className="min-h-screen bg-brand-light text-brand-navy pb-[57px] lg:pb-0">
-        <Header />
-        <main className="max-w-3xl mx-auto px-6 py-24">
-          <h1 className="font-serif text-4xl md:text-5xl text-brand-navy">Dental Implants</h1>
-          <p className="mt-6 text-muted-foreground leading-relaxed">
-            Content for this page is being migrated. Detailed treatment information,
-            FAQs and structured data will be added in Phase 4 of the migration.
-          </p>
-          <a
-            href="/#booking"
-            className="inline-block mt-8 px-6 py-3 rounded-full bg-brand-navy text-white font-medium"
-          >
-            Book a Free Consultation
-          </a>
-        </main>
-        <Footer />
-        <WhatsAppButton />
-        <MobileStickyCTA />
-      </div>
-    </div>
-  );
+  return <ServiceLanding slug="dental-implants" />;
 }
