@@ -110,8 +110,7 @@ export const DOCTORS = [
     name: "Dr. Aishwarya Lakshmi",
     credentials: "BDS · FMC · PGDCC",
     role: "Chief Dentist & Founder",
-    image:
-      "https://lh3.googleusercontent.com/gps-cs-s/APNQkAGBnkZLSjhHx82lKDpM6lZN1dPebjAlNmF2HnFwsje16LOmRqXzQ20TMhxd2Pcz5U5XucgRzOl3c3bJxPjmmCMXl4KodDtDYIrRbP1bq1aFluyq4l7dBMbsTxkCGI-w3L7_iIA=s680-w680-h510-rw",
+    image: "/doctor-aishwarya.jpg",
     bio: "Dr. Aishwarya leads Dazzle as the chief dentist, blending aesthetic dentistry with skin & hair care. Her practice combines a Bachelor of Dental Surgery (BDS) with a Fellowship in Maxillofacial Cosmetology (FMC) and a Post-Graduate Diploma in Clinical Cosmetology (PGDCC) — bringing teeth, skin and hair expertise under one studio.",
     highlights: [
       "Smile Designing & Veneers",
