@@ -157,7 +157,6 @@ export const BookingForm = () => {
                     placeholder="e.g. Priya Sharma"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
-                    autoFocus
                   />
                   {errors[1] && <p className="text-red-600 text-xs font-bold mt-2">{errors[1]}</p>}
                 </motion.div>
