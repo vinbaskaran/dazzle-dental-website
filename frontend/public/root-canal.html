@@ -1707,52 +1707,190 @@ footer a:hover { color: white; }
     <h2 class="section-title">Book Your Free Consultation <em>Today</em></h2>
     <p class="section-desc">Takes less than 60 seconds. No payment needed to book. We'll assess your tooth, explain the procedure, and give you transparent pricing — completely free.</p>
     <div class="booking-card animate-in">
-      <div class="form-row">
-        <div class="form-group">
-          <label for="fname">Your Name *</label>
-          <input type="text" id="fname" placeholder="e.g. Rajesh Kumar" required />
+<style>
+        #rcBook { text-align: left; }
+        #rcBook .rc-progress-track { height:6px; background: var(--teal-soft); border-radius:3px; overflow:hidden; }
+        #rcBook .rc-progress-fill { height:100%; width:16.66%; background: var(--teal); border-radius:3px; transition: width .45s cubic-bezier(.4,0,.2,1); }
+        #rcBook .rc-step-indicator { display:flex; justify-content:space-between; align-items:center; margin:14px 0 6px; }
+        #rcBook .rc-step-label { font-size:12px; font-weight:600; color:var(--navy); text-transform:uppercase; letter-spacing:.07em; }
+        #rcBook .rc-step-counter { font-size:12px; font-weight:500; color:#90A4AE; }
+        #rcBook .rc-q { display:none; animation: rcFade .3s ease; }
+        #rcBook .rc-q.active { display:block; }
+        @keyframes rcFade { from{opacity:0; transform:translateY(10px);} to{opacity:1; transform:translateY(0);} }
+        #rcBook .rc-qnum { font-size:11px; font-weight:600; color:var(--teal); text-transform:uppercase; letter-spacing:.08em; margin-bottom:4px; }
+        #rcBook .rc-qtext { font-family:'Playfair Display',serif; font-size:20px; font-weight:700; color:var(--navy); margin-bottom:6px; line-height:1.3; }
+        #rcBook .rc-qhint { font-size:13px; color:var(--muted); margin-bottom:16px; }
+        #rcBook .rc-input { width:100%; padding:14px 16px; border:2px solid var(--border); border-radius:12px; font-family:'Outfit',sans-serif; font-size:15px; font-weight:500; color:var(--text); background:#fff; outline:none; transition:border-color .2s, box-shadow .2s; }
+        #rcBook .rc-input:focus { border-color:var(--teal); box-shadow:0 0 0 3px var(--teal-soft); }
+        #rcBook .rc-grid { display:grid; gap:10px; }
+        #rcBook .rc-grid.cols2 { grid-template-columns:1fr 1fr; }
+        #rcBook .rc-opt { display:flex; align-items:center; gap:12px; padding:13px 16px; border:2px solid var(--border); border-radius:12px; background:#fff; cursor:pointer; font-family:'Outfit',sans-serif; font-size:14px; font-weight:500; color:var(--text); text-align:left; transition:border-color .18s, background .18s, transform .15s; line-height:1.3; width:100%; }
+        #rcBook .rc-opt:hover { border-color:var(--teal); background:var(--teal-soft); transform:translateY(-1px); }
+        #rcBook .rc-opt.sel { border-color:var(--teal); background:var(--teal-soft); color:var(--navy); }
+        #rcBook .rc-opt .ic { font-size:22px; flex-shrink:0; }
+        #rcBook .rc-opt .lb { font-size:14px; font-weight:600; display:block; }
+        #rcBook .rc-opt .sb { font-size:11px; font-weight:400; color:var(--muted); margin-top:1px; display:block; }
+        #rcBook .rc-nav { display:flex; gap:10px; margin-top:20px; align-items:center; }
+        #rcBook .rc-back { background:none; border:2px solid var(--border); border-radius:100px; padding:12px 20px; font-family:'Outfit',sans-serif; font-size:14px; font-weight:600; color:var(--muted); cursor:pointer; transition:border-color .2s,color .2s; display:none; }
+        #rcBook .rc-back.show { display:block; }
+        #rcBook .rc-back:hover { border-color:var(--navy); color:var(--navy); }
+        #rcBook .rc-next { flex:1; background:var(--navy); color:#fff; border:none; border-radius:100px; padding:16px 24px; font-family:'Outfit',sans-serif; font-size:13px; font-weight:600; letter-spacing:.1em; text-transform:uppercase; cursor:pointer; transition:background .2s, transform .15s; }
+        #rcBook .rc-next:hover { background:var(--teal); transform:translateY(-1px); }
+        #rcBook .rc-next:disabled { background:#B0BEC5; cursor:not-allowed; transform:none; }
+        #rcBook .rc-err { font-size:12px; font-weight:600; color:#C62828; margin-top:8px; display:none; }
+        #rcBook .rc-err.show { display:block; }
+        #rcBook .rc-other { margin-top:10px; }
+      </style>
+      <div id="rcBook">
+        <div class="rc-progress-track"><div class="rc-progress-fill" id="rcProgressFill"></div></div>
+        <div class="rc-step-indicator">
+          <span class="rc-step-label" id="rcStepLabel">Your Name</span>
+          <span class="rc-step-counter" id="rcStepCounter">Step 1 of 6</span>
         </div>
-        <div class="form-group">
-          <label for="phone">Mobile Number *</label>
-          <input type="tel" id="phone" placeholder="+91 98765 43210" required />
+
+        <!-- Q1: NAME -->
+        <div class="rc-q active" data-step="1">
+          <div class="rc-qnum">Question 1 of 6</div>
+          <div class="rc-qtext">What is your name? 👋</div>
+          <div class="rc-qhint">So we can address you properly when we call.</div>
+          <input class="rc-input" type="text" id="rcQ1" placeholder="e.g. Priya Sharma" autocomplete="off" />
+          <div class="rc-err" id="rcErr1">Please enter your name.</div>
         </div>
-        <div class="form-group">
-          <label for="service">Concern</label>
-          <select id="service">
-            <option value="">Select your concern</option>
-            <option value="rct" selected>Root Canal Treatment (RCT)</option>
-            <option value="rct-crown">RCT + Crown</option>
-            <option value="tooth-pain">Severe Tooth Pain</option>
-            <option value="consult">General Dental Consultation</option>
-          </select>
+
+        <!-- Q2: PHONE -->
+        <div class="rc-q" data-step="2">
+          <div class="rc-qnum">Question 2 of 6</div>
+          <div class="rc-qtext">Your mobile number? 📱</div>
+          <div class="rc-qhint">We will call you within 30 minutes to confirm your appointment.</div>
+          <input class="rc-input" type="tel" id="rcQ2" placeholder="e.g. 98765 43210" autocomplete="off" inputmode="numeric" maxlength="12" />
+          <div class="rc-err" id="rcErr2">Please enter a valid 10-digit mobile number.</div>
         </div>
-        <div class="form-group">
-          <label for="tooth">Which Tooth? (optional)</label>
-          <select id="tooth">
-            <option value="">I'm not sure</option>
-            <option>Front tooth</option>
-            <option>Side tooth (premolar)</option>
-            <option>Back tooth (molar)</option>
-          </select>
+
+        <!-- Q3: AREA -->
+        <div class="rc-q" data-step="3">
+          <div class="rc-qnum">Question 3 of 6</div>
+          <div class="rc-qtext">Which area are you from? 📍</div>
+          <div class="rc-qhint">Helps us understand how far you are from our clinic.</div>
+          <div class="rc-grid cols2">
+            <button type="button" class="rc-opt" onclick="rcSelect('area','Melakottaiyur',this)"><span class="ic">🏘️</span><span class="lb">Melakottaiyur</span></button>
+            <button type="button" class="rc-opt" onclick="rcSelect('area','Mambakkam',this)"><span class="ic">🏘️</span><span class="lb">Mambakkam</span></button>
+            <button type="button" class="rc-opt" onclick="rcSelect('area','Vandalur',this)"><span class="ic">🏘️</span><span class="lb">Vandalur</span></button>
+            <button type="button" class="rc-opt" onclick="rcSelect('area','Kelambakkam',this)"><span class="ic">🏘️</span><span class="lb">Kelambakkam</span></button>
+            <button type="button" class="rc-opt" onclick="rcSelect('area','Perumbakkam',this)"><span class="ic">🏘️</span><span class="lb">Perumbakkam</span></button>
+            <button type="button" class="rc-opt" onclick="rcSelect('area','Other',this)"><span class="ic">📍</span><span class="lb">Other Area</span></button>
+          </div>
+          <input class="rc-input rc-other" type="text" id="rcAreaOther" placeholder="Type your area name…" style="display:none" />
+          <div class="rc-err" id="rcErr3">Please select or type your area.</div>
         </div>
-        <div class="form-group">
-          <label for="slot">Preferred Time</label>
-          <select id="slot">
-            <option value="">Choose a slot</option>
-            <option>Morning (10 AM – 1 PM)</option>
-            <option>Evening (5 PM – 9 PM)</option>
-            <option>Any available slot</option>
-          </select>
+
+        <!-- Q4: WHICH TOOTH -->
+        <div class="rc-q" data-step="4">
+          <div class="rc-qnum">Question 4 of 6</div>
+          <div class="rc-qtext">Which tooth is paining? 🦷</div>
+          <div class="rc-qhint">Point to where it hurts in your mouth.</div>
+          <div class="rc-grid cols2">
+            <button type="button" class="rc-opt" onclick="rcSelect('tooth','Upper Front Teeth',this)"><span class="ic">⬆️</span><span><span class="lb">Upper Front</span><span class="sb">Top row, front teeth</span></span></button>
+            <button type="button" class="rc-opt" onclick="rcSelect('tooth','Upper Back Teeth',this)"><span class="ic">↖️</span><span><span class="lb">Upper Back</span><span class="sb">Top row, back teeth</span></span></button>
+            <button type="button" class="rc-opt" onclick="rcSelect('tooth','Lower Front Teeth',this)"><span class="ic">⬇️</span><span><span class="lb">Lower Front</span><span class="sb">Bottom row, front teeth</span></span></button>
+            <button type="button" class="rc-opt" onclick="rcSelect('tooth','Lower Back Teeth',this)"><span class="ic">↙️</span><span><span class="lb">Lower Back</span><span class="sb">Bottom row, back teeth</span></span></button>
+            <button type="button" class="rc-opt" onclick="rcSelect('tooth','Multiple Teeth',this)"><span class="ic">😬</span><span><span class="lb">Multiple Teeth</span><span class="sb">More than one tooth hurts</span></span></button>
+            <button type="button" class="rc-opt" onclick="rcSelect('tooth','Not Sure',this)"><span class="ic">🤷</span><span><span class="lb">Not Sure</span><span class="sb">Doctor can find it</span></span></button>
+          </div>
+          <div class="rc-err" id="rcErr4">Please select which tooth is affected.</div>
         </div>
-        <div class="form-group full">
-          <label for="msg">Describe your pain (optional)</label>
-          <textarea id="msg" placeholder="e.g. Sharp pain when drinking cold water, started 3 days ago..."></textarea>
+
+        <!-- Q5: HOW LONG -->
+        <div class="rc-q" data-step="5">
+          <div class="rc-qnum">Question 5 of 6</div>
+          <div class="rc-qtext">How long have you had this pain? ⏱️</div>
+          <div class="rc-qhint">This helps our doctor understand how urgent your case is.</div>
+          <div class="rc-grid">
+            <button type="button" class="rc-opt" onclick="rcSelect('duration','Just started today',this)"><span class="ic">🔴</span><span><span class="lb">Just started today</span><span class="sb">Pain started today</span></span></button>
+            <button type="button" class="rc-opt" onclick="rcSelect('duration','2–3 days',this)"><span class="ic">🟠</span><span><span class="lb">2–3 days</span><span class="sb">A few days of pain</span></span></button>
+            <button type="button" class="rc-opt" onclick="rcSelect('duration','1–2 weeks',this)"><span class="ic">🟡</span><span><span class="lb">1–2 weeks</span><span class="sb">About a week or two</span></span></button>
+            <button type="button" class="rc-opt" onclick="rcSelect('duration','More than 1 month',this)"><span class="ic">⚪</span><span><span class="lb">More than a month</span><span class="sb">Pain has been there for a long time</span></span></button>
+          </div>
+          <div class="rc-err" id="rcErr5">Please select how long you've had the pain.</div>
+        </div>
+
+        <!-- Q6: WHEN TO VISIT -->
+        <div class="rc-q" data-step="6">
+          <div class="rc-qnum">Question 6 of 6</div>
+          <div class="rc-qtext">When can you visit us? 📅</div>
+          <div class="rc-qhint">We are open all 7 days — morning 10 AM–1 PM and evening 5–9 PM.</div>
+          <div class="rc-grid cols2">
+            <button type="button" class="rc-opt" onclick="rcSelect('visit','Today – Morning',this)"><span class="ic">🌅</span><span><span class="lb">Today Morning</span><span class="sb">10 AM – 1 PM</span></span></button>
+            <button type="button" class="rc-opt" onclick="rcSelect('visit','Today – Evening',this)"><span class="ic">🌆</span><span><span class="lb">Today Evening</span><span class="sb">5 PM – 9 PM</span></span></button>
+            <button type="button" class="rc-opt" onclick="rcSelect('visit','Tomorrow – Morning',this)"><span class="ic">📅</span><span><span class="lb">Tomorrow Morning</span><span class="sb">10 AM – 1 PM</span></span></button>
+            <button type="button" class="rc-opt" onclick="rcSelect('visit','Tomorrow – Evening',this)"><span class="ic">🗓️</span><span><span class="lb">Tomorrow Evening</span><span class="sb">5 PM – 9 PM</span></span></button>
+            <button type="button" class="rc-opt" onclick="rcSelect('visit','This Weekend',this)"><span class="ic">🎉</span><span><span class="lb">This Weekend</span><span class="sb">Saturday or Sunday</span></span></button>
+            <button type="button" class="rc-opt" onclick="rcSelect('visit','Flexible – Call me',this)"><span class="ic">📞</span><span><span class="lb">Flexible</span><span class="sb">Call me to fix a time</span></span></button>
+          </div>
+          <div class="rc-err" id="rcErr6">Please select when you can visit.</div>
+        </div>
+
+        <div class="rc-nav">
+          <button type="button" class="rc-back" id="rcBtnBack" onclick="rcPrev()">← Back</button>
+          <button type="button" class="rc-next" id="rcBtnNext" onclick="rcNext()" data-testid="booking-submit-btn">Continue →</button>
         </div>
       </div>
-      <button class="form-submit" onclick="submitBooking()" data-testid="booking-submit-btn">
-        📅 Book Free Consultation →
-      </button>
       <p class="form-note">Or message us directly on <a href="https://wa.me/919442645111?text=Hi%2C%20I%20need%20a%20root%20canal%20appointment">WhatsApp →</a> · We respond within 30 minutes during clinic hours.</p>
+      <script>
+      (function(){
+        let step = 1; const total = 6;
+        const ans = { area:'', tooth:'', duration:'', visit:'' };
+        const labels = ['Your Name','Mobile Number','Your Area','Tooth Affected','Pain Duration','Visit Timing'];
+        function tog(id, show){ const e = document.getElementById(id); if(e) e.classList.toggle('show', show); }
+        function rcValidate(s){
+          let ok = true;
+          if(s===1){ const v=document.getElementById('rcQ1').value.trim(); tog('rcErr1', !v); if(!v) ok=false; }
+          if(s===2){ const v=document.getElementById('rcQ2').value.replace(/\s/g,''); const bad=!/^\d{10}$/.test(v); tog('rcErr2', bad); if(bad) ok=false; }
+          if(s===3){ let a=ans.area; if(a==='Other') a=document.getElementById('rcAreaOther').value.trim(); tog('rcErr3', !a); if(!a) ok=false; }
+          if(s===4){ tog('rcErr4', !ans.tooth); if(!ans.tooth) ok=false; }
+          if(s===5){ tog('rcErr5', !ans.duration); if(!ans.duration) ok=false; }
+          if(s===6){ tog('rcErr6', !ans.visit); if(!ans.visit) ok=false; }
+          return ok;
+        }
+        window.rcSelect = function(key, val, btn){
+          btn.closest('.rc-grid').querySelectorAll('.rc-opt').forEach(b=>b.classList.remove('sel'));
+          btn.classList.add('sel'); ans[key] = val;
+          if(key==='area'){ const o=document.getElementById('rcAreaOther'); o.style.display = val==='Other' ? 'block' : 'none'; if(val!=='Other') o.value=''; }
+          const em={area:'rcErr3',tooth:'rcErr4',duration:'rcErr5',visit:'rcErr6'}; tog(em[key], false);
+          setTimeout(()=>{ if(rcValidate(step)) rcNext(); }, 220);
+        };
+        window.rcNext = function(){ if(!rcValidate(step)) return; if(step===total){ rcSubmit(); return; } rcGo(step+1); };
+        window.rcPrev = function(){ if(step>1) rcGo(step-1); };
+        function rcGo(n){
+          document.querySelector('#rcBook .rc-q[data-step="'+step+'"]').classList.remove('active');
+          step = n;
+          document.querySelector('#rcBook .rc-q[data-step="'+step+'"]').classList.add('active');
+          document.getElementById('rcProgressFill').style.width = (step/total*100)+'%';
+          document.getElementById('rcStepLabel').textContent = labels[step-1];
+          document.getElementById('rcStepCounter').textContent = 'Step '+step+' of '+total;
+          const b=document.getElementById('rcBtnBack'); step>1 ? b.classList.add('show') : b.classList.remove('show');
+          document.getElementById('rcBtnNext').textContent = step===total ? 'Book My FREE Checkup ✅' : 'Continue →';
+        }
+        function rcSubmit(){
+          const name = document.getElementById('rcQ1').value.trim();
+          const phone = document.getElementById('rcQ2').value.replace(/\s/g,'');
+          let area = ans.area==='Other' ? (document.getElementById('rcAreaOther').value.trim() || 'Other') : ans.area;
+          const btn = document.getElementById('rcBtnNext'); btn.textContent = 'Sending… ⏳'; btn.disabled = true;
+          const waMsg = encodeURIComponent(
+            "Hi Dazzle Dental! I'd like to book a FREE Root Canal Checkup 🦷\n\n" +
+            "Name: "+name+"\nPhone: "+phone+"\nArea: "+area+"\n" +
+            "Tooth: "+ans.tooth+"\nPain since: "+ans.duration+"\nCan visit: "+ans.visit
+          );
+          sessionStorage.setItem('dazzle_lead', JSON.stringify({ name, phone, area, tooth:ans.tooth, duration:ans.duration, visit:ans.visit, waMsg }));
+          document.getElementById('rcProgressFill').style.width = '100%';
+          document.getElementById('rcStepLabel').textContent = 'All Done!';
+          document.getElementById('rcStepCounter').textContent = '✅ Submitted';
+          setTimeout(()=>{ window.location.href = '/thank-you'; }, 1200);
+        }
+        document.addEventListener('keydown', function(e){
+          if(e.key==='Enter'){ const a=document.querySelector('#rcBook .rc-q.active'); if(a && a.querySelector('input')){ e.preventDefault(); rcNext(); } }
+        });
+      })();
+      </script>
     </div>
   </div>
 </section>
