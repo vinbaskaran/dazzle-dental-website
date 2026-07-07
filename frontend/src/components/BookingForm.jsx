@@ -71,20 +71,26 @@ export const BookingForm = () => {
 
   const back = () => { setErrors({}); setStep((s) => s - 1); };
 
-  const handleSubmit = () => {
+  const handleSubmit = (override = {}) => {
     setSubmitting(true);
-    const finalArea = area === "Other" ? (areaOther.trim() || "Other") : area;
+    const vName = override.name ?? name;
+    const vPhone = override.phone ?? phone;
+    const vAreaRaw = override.area ?? area;
+    const finalArea = vAreaRaw === "Other" ? (areaOther.trim() || "Other") : vAreaRaw;
+    const vTooth = override.tooth ?? tooth;
+    const vDuration = override.duration ?? duration;
+    const vVisit = override.visit ?? visit;
     const waMsg = encodeURIComponent(
-      `Hi Dazzle Dental! I'd like to book a FREE Root Canal Checkup 🦷\n\nName: ${name}\nPhone: ${phone}\nArea: ${finalArea}\nTooth: ${tooth}\nPain since: ${duration}\nCan visit: ${visit}`
+      `Hi Dazzle Dental! I'd like to book a FREE Root Canal Checkup 🦷\n\nName: ${vName}\nPhone: ${vPhone}\nArea: ${finalArea}\nTooth: ${vTooth}\nPain since: ${vDuration}\nCan visit: ${vVisit}`
     );
     // Store for thank-you page
-    sessionStorage.setItem("dazzle_lead", JSON.stringify({ name, phone, area: finalArea, tooth, duration, visit, waMsg }));
+    sessionStorage.setItem("dazzle_lead", JSON.stringify({ name: vName, phone: vPhone, area: finalArea, tooth: vTooth, duration: vDuration, visit: vVisit, waMsg }));
     // Record the enquiry in Google Sheet (fire-and-forget; never blocks the redirect)
     try {
       fetch(SHEET_ENDPOINT, {
         method: "POST", mode: "no-cors", keepalive: true,
         headers: { "Content-Type": "text/plain;charset=utf-8" },
-        body: JSON.stringify({ name, phone, area: finalArea, tooth, duration, visit }),
+        body: JSON.stringify({ name: vName, phone: vPhone, area: finalArea, tooth: vTooth, duration: vDuration, visit: vVisit }),
       });
     } catch (e) {}
     setTimeout(() => {
@@ -93,6 +99,23 @@ export const BookingForm = () => {
       // Redirect to thank-you page
       window.location.href = "/thank-you";
     }, 1200);
+  };
+
+  // Picking an option instantly stores it and auto-advances (or submits on the last
+  // step). We pass the chosen value directly so it never depends on not-yet-committed
+  // React state — this is what makes it feel instant, like the root-canal page.
+  const chooseOption = (field, value) => {
+    if (field === "area") setArea(value);
+    else if (field === "tooth") setTooth(value);
+    else if (field === "duration") setDuration(value);
+    else if (field === "visit") setVisit(value);
+    setErrors({});
+    // "Other" area needs a typed value — wait for the Continue button
+    if (field === "area" && value === "Other") return;
+    setTimeout(() => {
+      if (step === TOTAL) handleSubmit({ [field]: value });
+      else setStep((s) => s + 1);
+    }, 180);
   };
 
   const progress = (step / TOTAL) * 100;
@@ -200,7 +223,7 @@ export const BookingForm = () => {
                   <div className="grid grid-cols-2 gap-2.5">
                     {AREAS.map((a) => (
                       <button key={a} type="button" className={optClass(area === a)}
-                        onClick={() => { setArea(a); setErrors({}); }}>
+                        onClick={() => chooseOption("area", a)}>
                         <span className="text-lg">🏘️</span>
                         <span className="font-semibold text-sm">{a}</span>
                       </button>
@@ -227,7 +250,7 @@ export const BookingForm = () => {
                   <div className="grid grid-cols-2 gap-2.5">
                     {TEETH.map((t) => (
                       <button key={t.value} type="button" className={optClass(tooth === t.value)}
-                        onClick={() => { setTooth(t.value); setErrors({}); setTimeout(next, 220); }}>
+                        onClick={() => chooseOption("tooth", t.value)}>
                         <span className="text-xl mt-0.5">{t.icon}</span>
                         <div>
                           <div className="font-semibold text-sm leading-tight">{t.value}</div>
@@ -248,7 +271,7 @@ export const BookingForm = () => {
                   <div className="flex flex-col gap-2.5">
                     {DURATIONS.map((d) => (
                       <button key={d.value} type="button" className={optClass(duration === d.value)}
-                        onClick={() => { setDuration(d.value); setErrors({}); setTimeout(next, 220); }}>
+                        onClick={() => chooseOption("duration", d.value)}>
                         <span className="text-xl mt-0.5">{d.icon}</span>
                         <div>
                           <div className="font-semibold text-sm">{d.value}</div>
@@ -269,7 +292,7 @@ export const BookingForm = () => {
                   <div className="grid grid-cols-2 gap-2.5">
                     {SLOTS.map((s) => (
                       <button key={s.value} type="button" className={optClass(visit === s.value)}
-                        onClick={() => { setVisit(s.value); setErrors({}); }}>
+                        onClick={() => chooseOption("visit", s.value)}>
                         <span className="text-xl mt-0.5">{s.icon}</span>
                         <div>
                           <div className="font-semibold text-sm leading-tight">{s.value}</div>
