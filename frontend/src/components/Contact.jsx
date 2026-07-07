@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import axios from "axios";
 import { MapPin, Phone, Mail, Clock, Loader2, Send } from "lucide-react";
 import { Input } from "./ui/input";
 import { Textarea } from "./ui/textarea";
@@ -8,7 +7,8 @@ import { Button } from "./ui/button";
 import { toast } from "sonner";
 import { CLINIC } from "../lib/constants";
 
-const API = `${process.env.REACT_APP_BACKEND_URL}/api`;
+// Google Apps Script endpoint (records to the sheet + emails the clinic)
+const SHEET_ENDPOINT = "https://script.google.com/macros/s/AKfycbz6wDB8f81J1I1HEWIsnwzh8jZM13Le-G-u6Ixp3OPII5M4ef6DotzUs7s_w5SU3M1KEA/exec";
 
 export const Contact = () => {
   const [form, setForm] = useState({ name: "", email: "", phone: "", message: "" });
@@ -22,7 +22,11 @@ export const Contact = () => {
     }
     setLoading(true);
     try {
-      await axios.post(`${API}/contact`, form);
+      await fetch(SHEET_ENDPOINT, {
+        method: "POST", mode: "no-cors", keepalive: true,
+        headers: { "Content-Type": "text/plain;charset=utf-8" },
+        body: JSON.stringify({ type: "contact", source: "homepage", name: form.name, email: form.email, phone: form.phone, message: form.message }),
+      });
       toast.success("Message sent — we'll reply within 24 hours.");
       setForm({ name: "", email: "", phone: "", message: "" });
     } catch {
