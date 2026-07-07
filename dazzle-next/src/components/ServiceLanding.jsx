@@ -92,18 +92,15 @@ function RootCanalBookingForm() {
     );
 
     // ── Save to Google Sheets ──
-    fetch("https://script.google.com/macros/s/AKfycbz6wDB8f81J1I1HEWIsnwzh8jZM13Le-G-u6Ixp3OPII5M4ef6DotzUs7s_w5SU3M1KEA/exec", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        name,
-        phone,
-        area: finalArea,
-        tooth,
-        duration,
-        visit,
-        date: new Date().toLocaleString("en-IN"),
-      }),
+   const _params = new URLSearchParams({
+      name, phone,
+      area: finalArea,
+      tooth, duration, visit,
+      date: new Date().toLocaleString("en-IN"),
+    });
+    fetch("https://script.google.com/macros/s/AKfycbz6wDB8f81J1I1HEWIsnwzh8jZM13Le-G-u6Ixp3OPII5M4ef6DotzUs7s_w5SU3M1KEA/exec?" + _params.toString(), {
+      method: "GET",
+      mode: "no-cors",
     }).catch(() => {});
 
     // ── Save for thank-you page ──
