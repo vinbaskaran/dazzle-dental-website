@@ -90,7 +90,25 @@ function RootCanalBookingForm() {
     const waMsg = encodeURIComponent(
       `Hi Dazzle Dental! I'd like to book a FREE Root Canal Checkup 🦷\n\nName: ${name}\nPhone: ${phone}\nArea: ${finalArea}\nTooth: ${tooth}\nPain since: ${duration}\nCan visit: ${visit}`
     );
+
+    // ── Save to Google Sheets ──
+    fetch("https://script.google.com/macros/s/AKfycbz6wDB8f81J1I1HEWIsnwzh8jZM13Le-G-u6Ixp3OPII5M4ef6DotzUs7s_w5SU3M1KEA/exec", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        name,
+        phone,
+        area: finalArea,
+        tooth,
+        duration,
+        visit,
+        date: new Date().toLocaleString("en-IN"),
+      }),
+    }).catch(() => {});
+
+    // ── Save for thank-you page ──
     sessionStorage.setItem("dazzle_lead", JSON.stringify({ name, phone, area: finalArea, tooth, duration, visit, waMsg }));
+
     setTimeout(() => {
       setSubmitting(false);
       window.location.href = "/thank-you";
