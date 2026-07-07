@@ -202,7 +202,6 @@ logging.basicConfig(
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
 )
 logger = logging.getLogger(__name__)
-
 import httpx
 
 class RootCanalLead(BaseModel):
@@ -216,13 +215,10 @@ class RootCanalLead(BaseModel):
 @api_router.post("/leads", status_code=201)
 async def save_lead(payload: RootCanalLead):
     try:
-        # Save to MongoDB
         doc = payload.model_dump()
         doc['created_at'] = datetime.now(timezone.utc).isoformat()
         doc['source'] = 'root-canal'
         await db.leads.insert_one(doc)
-
-        # Save to Google Sheets
         params = {
             "name": payload.name,
             "phone": payload.phone,
@@ -232,8 +228,8 @@ async def save_lead(payload: RootCanalLead):
             "visit": payload.visit,
             "date": datetime.now().strftime("%d/%m/%Y %H:%M"),
         }
-        async with httpx.AsyncClient() as client:
-            await client.get(
+        async with httpx.AsyncClient() as c:
+            await c.get(
                 "https://script.google.com/macros/s/AKfycbz6wDB8f81J1I1HEWIsnwzh8jZM13Le-G-u6Ixp3OPII5M4ef6DotzUs7s_w5SU3M1KEA/exec",
                 params=params,
                 follow_redirects=True,
@@ -243,6 +239,3 @@ async def save_lead(payload: RootCanalLead):
     except Exception as e:
         logger.error(f"Lead save error: {e}")
         return {"status": "ok"}
-@app.on_event("shutdown")
-async def shutdown_db_client():
-    client.close()
