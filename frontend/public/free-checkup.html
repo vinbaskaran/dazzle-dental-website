@@ -752,6 +752,15 @@ function submitForm() {
   // Store answers in sessionStorage so thank-you page can read them
   sessionStorage.setItem('dazzle_lead', JSON.stringify({ name, phone, area, tooth: answers.tooth, duration: answers.duration, visit: answers.visit, waMsg }));
 
+  // Record the enquiry in Google Sheet (fire-and-forget; never blocks the redirect)
+  try {
+    fetch('https://script.google.com/macros/s/AKfycbz6wDB8f81J1I1HEWIsnwzh8jZM13Le-G-u6Ixp3OPII5M4ef6DotzUs7s_w5SU3M1KEA/exec', {
+      method: 'POST', mode: 'no-cors', keepalive: true,
+      headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+      body: JSON.stringify({ name: name, phone: phone, area: area, tooth: answers.tooth, duration: answers.duration, visit: answers.visit })
+    });
+  } catch (e) {}
+
   // Fill progress to 100%
   document.getElementById('progressFill').style.width = '100%';
   document.getElementById('stepLabel').textContent = 'All Done!';

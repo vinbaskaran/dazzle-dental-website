@@ -31,6 +31,9 @@ const SLOTS = [
 const STEP_LABELS = ["Your Name", "Mobile Number", "Your Area", "Tooth Affected", "Pain Duration", "Visit Timing"];
 const TOTAL = 6;
 
+// Google Apps Script endpoint that records each enquiry into the Google Sheet
+const SHEET_ENDPOINT = "https://script.google.com/macros/s/AKfycbz6wDB8f81J1I1HEWIsnwzh8jZM13Le-G-u6Ixp3OPII5M4ef6DotzUs7s_w5SU3M1KEA/exec";
+
 export const BookingForm = () => {
   const [step, setStep] = useState(1);
   const [name, setName] = useState("");
@@ -76,6 +79,14 @@ export const BookingForm = () => {
     );
     // Store for thank-you page
     sessionStorage.setItem("dazzle_lead", JSON.stringify({ name, phone, area: finalArea, tooth, duration, visit, waMsg }));
+    // Record the enquiry in Google Sheet (fire-and-forget; never blocks the redirect)
+    try {
+      fetch(SHEET_ENDPOINT, {
+        method: "POST", mode: "no-cors", keepalive: true,
+        headers: { "Content-Type": "text/plain;charset=utf-8" },
+        body: JSON.stringify({ name, phone, area: finalArea, tooth, duration, visit }),
+      });
+    } catch (e) {}
     setTimeout(() => {
       setSubmitting(false);
       setDone(true);
