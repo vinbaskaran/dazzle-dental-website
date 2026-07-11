@@ -73,6 +73,8 @@ Added a **patient video testimonial carousel** to `frontend/public/root-canal.ht
 - **Component:** the manager's uploaded React `TestimonialCarousel.jsx`/`.module.css` could NOT drop into this static page — it was **ported to vanilla HTML/CSS/JS** scoped under `#rcTestimonials` / `.rct-*`. On-brand (navy/teal, Playfair+Outfit). Swipeable scroll-snap track, dot nav + desktop arrows, **lazy-load** (`preload="none"`, real `src` set from `data-src` only on first play), tap-to-play with sound, single-video-at-a-time. **No name captions** (real patients, no consented names).
 - The Drive **connector cannot enumerate files inside a shared folder** (only the folder itself) — the owner must share files directly, or you copy them into your own Drive, for the connector to read them. Here the videos were downloaded manually instead.
 
+- **2026-07-11:** Replaced the hand-built inline **SVG tooth-anatomy diagram** in the "Inside Your Tooth" card with a raster image **`/gallery/Inside our tooth.png`** (referenced URL-encoded as `Inside%20our%20tooth.png`). Styled via `.anatomy-svg img`. The old SVG is gone from `root-canal.html` (recoverable from git history if ever needed).
+
 ## 6. Gotchas for future sessions
 
 - **Live site = `frontend/` (React homepage) + `frontend/public/*.html` (static service pages). `dazzle-next/` is NOT deployed.** Make changes in `frontend/`.
