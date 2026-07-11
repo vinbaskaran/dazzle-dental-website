@@ -85,6 +85,13 @@ Added **Microsoft Clarity** (free heatmaps + session recordings) to the whole si
 - **Verified live** on 2026-07-11 via browser: `window.clarity` is an active function and the tag loads as `https://www.clarity.ms/tag/xknxl0n8dh?ref=gtm` on both `/` and `/root-canal`. The `?ref=gtm` + firing on production confirms the GTM version is published.
 - To manage/pause it: change the tag in GTM (tagmanager.google.com → `GTM-NFHTT4T6`), or the project at clarity.microsoft.com. If a cookie-consent banner is added later, Clarity may need to be gated under analytics consent.
 
+## 5d. Privacy Policy + analytics disclosure — 2026-07-11
+
+Created **`frontend/public/privacy-policy.html`** (on-brand, at `/privacy-policy` via `_redirects`; added to `sitemap.xml`). Covers form data collected (name, phone, area, tooth concern, visit time, email/message → Google Sheet + email), cookies, **GA4, Microsoft Clarity (session replay/heatmaps), Google Ads**, third-party processing, data retention, user rights (India DPDP), and links the Microsoft Privacy Statement. Opens with Microsoft's recommended site-disclosure statement.
+
+- **Footer "Privacy Policy" link + a one-line analytics disclosure added to every page:** the 7 intact static service pages (root-canal, dental-implants, teeth-whitening, smile-makeover, wisdom-tooth-extraction, hydra-facial, hair-prp), the React homepage (`src/components/Footer.jsx`), the ad landing page (`free-checkup.html`, important for Google Ads policy), and `thank-you.html`.
+- Rationale: local competitors set a low bar (smiledentistree.com has no policy at all; karpagamdentalcare.com has a boilerplate one with a leftover `.local` dev URL). This is a real, tailored policy. Not legal advice — owner should have it reviewed.
+
 ## 6. Gotchas for future sessions
 
 - **Live site = `frontend/` (React homepage) + `frontend/public/*.html` (static service pages). `dazzle-next/` is NOT deployed.** Make changes in `frontend/`.
@@ -96,6 +103,7 @@ Added **Microsoft Clarity** (free heatmaps + session recordings) to the whole si
 - `backend/.env` secrets are committed → rotate.
 - **Flaky sandbox mount can truncate large-file writes.** On 2026-07-11 edits to `root-canal.html` AND this `CLAUDE.md` silently truncated the files mid-write (cut off mid-tag/sentence). Recovery: `git show HEAD:<path> > /tmp/clean && cp /tmp/clean <path>`, then re-apply edits via a script. After editing, **verify with `wc -l` + `tail`** and check tag balance.
 - **Stale `.git/index.lock`** appeared and could NOT be removed from the sandbox ("Operation not permitted"). Read-only git (`git show`, `git status`) still works, but commits are blocked until it's deleted. Remove it in your own Git Bash: `rm -f .git/index.lock`.
+- **⚠️ `braces-aligners.html` is TRUNCATED/BROKEN in the repo** (discovered 2026-07-11). It ends mid-tag in the Related Services section (~1346 lines, no `</html>`) — missing the rest of Related Services, the footer, WhatsApp button, and ALL page scripts (FAQ accordion, animations, booking→WhatsApp). Introduced by the flaky-mount truncation during the past **942a818** "cross-links" commit; last intact version is **da65a4b** (1363 lines, but predates GTM/doctor-photo/cross-links). Needs reconstruction: take the current head + rebuild the missing tail from a sibling page (adapt Related Services links for braces). It is the one service page WITHOUT the new footer privacy link. Likely broken on the live site below the fold.
 - **Self-hosted videos** live in `frontend/public/testimonials/`. Compress new source videos (720p, CRF 26, faststart) before committing — never commit raw phone MP4s (tens of MB each).
 
 ## 7. Working-style preferences (from the site owner)

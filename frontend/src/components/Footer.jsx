@@ -26,6 +26,7 @@ export const Footer = () => {
               <li><a href="#about" className="hover:text-brand-teal-soft">About</a></li>
               <li><a href="#doctors" className="hover:text-brand-teal-soft">Doctors</a></li>
               <li><a href="#booking" className="hover:text-brand-teal-soft">Book Appointment</a></li>
+              <li><a href="/privacy-policy" className="hover:text-brand-teal-soft">Privacy Policy</a></li>
             </ul>
           </div>
 
@@ -51,8 +52,14 @@ export const Footer = () => {
         </div>
         <div className="mt-8 flex flex-col sm:flex-row gap-3 justify-between text-xs text-white/50">
           <div>© {new Date().getFullYear()} Dazzle Dental & Cosmetic Studio. All rights reserved.</div>
-          <div>Crafted with care for healthy smiles.</div>
+          <div className="flex gap-5">
+            <a href="/privacy-policy" className="hover:text-brand-teal-soft">Privacy Policy</a>
+            <span>Crafted with care for healthy smiles.</span>
+          </div>
         </div>
+        <p className="mt-4 text-[11px] text-white/40 leading-relaxed max-w-3xl">
+          This site uses cookies and analytics tools including Google Analytics and Microsoft Clarity to understand how visitors use it and to improve our services. By using this site you agree to this — see our <a href="/privacy-policy" className="underline hover:text-brand-teal-soft">Privacy Policy</a>.
+        </p>
       </div>
     </footer>
   );
