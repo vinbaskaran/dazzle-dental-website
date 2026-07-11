@@ -75,6 +75,8 @@ Added a **patient video testimonial carousel** to `frontend/public/root-canal.ht
 
 - **2026-07-11:** Replaced the hand-built inline **SVG tooth-anatomy diagram** in the "Inside Your Tooth" card with a raster image **`/gallery/Inside our tooth.png`** (referenced URL-encoded as `Inside%20our%20tooth.png`). Styled via `.anatomy-svg img`. The old SVG is gone from `root-canal.html` (recoverable from git history if ever needed).
 
+- **2026-07-11:** In the "Why Patients Choose Dazzle" section, the main image is now **`/gallery/Root canal.png`** (self-hosted, replaced a hot-linked Pexels URL). NOTE: this PNG has a **clinic-room inset composited into the image itself** (bottom-right) — do NOT re-add an HTML `.why-img-accent` inset or you'll get a duplicate (that bug happened and was removed). The PNG was also cropped to strip baked-in AI junk (stray "ff" text + a teal pill column on the right edge). The old `.why-img-accent` CSS rules remain but are now unused/dead.
+
 ## 6. Gotchas for future sessions
 
 - **Live site = `frontend/` (React homepage) + `frontend/public/*.html` (static service pages). `dazzle-next/` is NOT deployed.** Make changes in `frontend/`.
