@@ -35,7 +35,7 @@ Deploy timing: editing a file in `frontend/public/*.html` still goes through a R
   - light `#FDFDFB`, sand `#F5F5F0`, pearl `#EDF2F4`
   - text `#0F172A`, muted `#475569`, border `#E2E4E0`
 - Buttons: navy background → teal on hover, subtle translateY lift.
-- **Analytics on every page:** GTM `GTM-NFHTT4T6`, GA4 `G-ZRBD0QKYY4`.
+- **Analytics on every page:** GTM `GTM-NFHTT4T6`, GA4 `G-ZRBD0QKYY4`, **Microsoft Clarity** `xknxl0n8dh` (heatmaps + session recordings).
 - **Clinic facts:** Dr. Aishwarya Lakshmi (BDS · FMC · PGDCC). Phone `+91 94426 45111`. Melakottaiyur, Kelambakkam–Vandalur Rd, Chennai 600127. Open all 7 days, 10 AM–1 PM & 5–9 PM. Email `dazzledentalcosmetic@gmail.com`.
 
 ## 4. Lead capture — forms → Google Sheet + email
@@ -76,6 +76,14 @@ Added a **patient video testimonial carousel** to `frontend/public/root-canal.ht
 - **2026-07-11:** Replaced the hand-built inline **SVG tooth-anatomy diagram** in the "Inside Your Tooth" card with a raster image **`/gallery/Inside our tooth.png`** (referenced URL-encoded as `Inside%20our%20tooth.png`). Styled via `.anatomy-svg img`. The old SVG is gone from `root-canal.html` (recoverable from git history if ever needed).
 
 - **2026-07-11:** In the "Why Patients Choose Dazzle" section, the main image is now **`/gallery/Root canal.png`** (self-hosted, replaced a hot-linked Pexels URL). NOTE: this PNG has a **clinic-room inset composited into the image itself** (bottom-right) — do NOT re-add an HTML `.why-img-accent` inset or you'll get a duplicate (that bug happened and was removed). The PNG was also cropped to strip baked-in AI junk (stray "ff" text + a teal pill column on the right edge). The old `.why-img-accent` CSS rules remain but are now unused/dead.
+
+## 5c. Microsoft Clarity (analytics) — 2026-07-11
+
+Added **Microsoft Clarity** (free heatmaps + session recordings) to the whole site. **Project ID: `xknxl0n8dh`** (account: Google `vineethbaskaran1@gmail.com`).
+
+- **Install method: via GTM, NOT in code.** Clarity's own "Google Tag Manager" auto-connect created an official Microsoft Clarity tag inside container **`GTM-NFHTT4T6`** firing on **All Pages**, and published it. There is **no Clarity `<script>` in any HTML file** — do not add one (it would double-count). Every page (React homepage + all static pages) is covered automatically, including future pages.
+- **Verified live** on 2026-07-11 via browser: `window.clarity` is an active function and the tag loads as `https://www.clarity.ms/tag/xknxl0n8dh?ref=gtm` on both `/` and `/root-canal`. The `?ref=gtm` + firing on production confirms the GTM version is published.
+- To manage/pause it: change the tag in GTM (tagmanager.google.com → `GTM-NFHTT4T6`), or the project at clarity.microsoft.com. If a cookie-consent banner is added later, Clarity may need to be gated under analytics consent.
 
 ## 6. Gotchas for future sessions
 
