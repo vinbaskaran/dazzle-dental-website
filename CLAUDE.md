@@ -65,6 +65,14 @@ Data hand-off: forms write `sessionStorage["dazzle_lead"]`; `thank-you.html` rea
 - Wired all forms to the Google Sheet + email via Apps Script; rewired `Contact.jsx` off the dead backend; retired `dazzle-backend`.
 - Fixed the homepage form's option auto-advance (React stale-state bug that caused lag / false "please select" errors / no auto-submit).
 
+## 5b. Patient video testimonials (root-canal page) — 2026-07-11
+
+Added a **patient video testimonial carousel** to `frontend/public/root-canal.html`, directly below the hero (before the trust strip), titled "Watch Our Patients' Real Experiences".
+
+- **Source videos:** 5 vertical (9:16) clips from the manager's shared Drive folder "Dazzle_Patient testimonial" (owner balaitsmi@gmail.com). Downloaded, then **compressed with ffmpeg** to 720x1280 H.264 (`-crf 26`, `-movflags +faststart`, AAC 96k) — raw ~278 MB became ~22 MB total. Self-hosted in **`frontend/public/testimonials/1.mp4 … 5.mp4`** with **poster stills `1.jpg … 5.jpg`** (frame grabbed ~2s in).
+- **Component:** the manager's uploaded React `TestimonialCarousel.jsx`/`.module.css` could NOT drop into this static page — it was **ported to vanilla HTML/CSS/JS** scoped under `#rcTestimonials` / `.rct-*`. On-brand (navy/teal, Playfair+Outfit). Swipeable scroll-snap track, dot nav + desktop arrows, **lazy-load** (`preload="none"`, real `src` set from `data-src` only on first play), tap-to-play with sound, single-video-at-a-time. **No name captions** (real patients, no consented names).
+- The Drive **connector cannot enumerate files inside a shared folder** (only the folder itself) — the owner must share files directly, or you copy them into your own Drive, for the connector to read them. Here the videos were downloaded manually instead.
+
 ## 6. Gotchas for future sessions
 
 - **Live site = `frontend/` (React homepage) + `frontend/public/*.html` (static service pages). `dazzle-next/` is NOT deployed.** Make changes in `frontend/`.
@@ -74,6 +82,9 @@ Data hand-off: forms write `sessionStorage["dazzle_lead"]`; `thank-you.html` rea
 - **Never hot-link Google Business `gps-cs-s` image URLs** — they expire. Host images in `frontend/public/`.
 - Apps Script `doGet` logs a row on a raw GET (guarded now to skip blank rows); still avoid opening the `/exec` URL directly.
 - `backend/.env` secrets are committed → rotate.
+- **Flaky sandbox mount can truncate large-file writes.** On 2026-07-11 edits to `root-canal.html` AND this `CLAUDE.md` silently truncated the files mid-write (cut off mid-tag/sentence). Recovery: `git show HEAD:<path> > /tmp/clean && cp /tmp/clean <path>`, then re-apply edits via a script. After editing, **verify with `wc -l` + `tail`** and check tag balance.
+- **Stale `.git/index.lock`** appeared and could NOT be removed from the sandbox ("Operation not permitted"). Read-only git (`git show`, `git status`) still works, but commits are blocked until it's deleted. Remove it in your own Git Bash: `rm -f .git/index.lock`.
+- **Self-hosted videos** live in `frontend/public/testimonials/`. Compress new source videos (720p, CRF 26, faststart) before committing — never commit raw phone MP4s (tens of MB each).
 
 ## 7. Working-style preferences (from the site owner)
 
