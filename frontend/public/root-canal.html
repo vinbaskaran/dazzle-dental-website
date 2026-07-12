@@ -995,6 +995,32 @@ footer a:hover { color: white; }
 </style>
 <!-- mobile spacing tightened 2026-07-11 -->
 <style>@media (max-width:768px){section{padding-top:32px !important;padding-bottom:40px !important}}</style>
+<!-- book-CTA revamp 2026-07-12: hero inline-expand + header modal (both drive the single #rcBook form; evaluate & unify later) -->
+<style>
+  /* Hero inline-expand panel */
+  .hero-book-panel { max-height:0; overflow:hidden; opacity:0; transition:max-height .5s cubic-bezier(.4,0,.2,1), opacity .4s ease, margin-top .4s ease; }
+  .hero-book-panel.open { opacity:1; margin-top:20px; }
+  .hero-book-inner .booking-card { background:#fff; border-radius:20px; padding:22px 20px; box-shadow:0 18px 50px -12px rgba(10,25,41,0.45); border:1px solid rgba(255,255,255,0.15); }
+  .hero-book-inner .form-note { color:var(--muted); }
+  #heroBookBtn.is-open { background:var(--teal); }
+
+  /* Header modal overlay */
+  .book-modal { position:fixed; inset:0; z-index:2000; display:none; }
+  .book-modal.show { display:block; }
+  .book-modal-backdrop { position:absolute; inset:0; background:rgba(10,25,41,0.62); backdrop-filter:blur(4px); -webkit-backdrop-filter:blur(4px); opacity:0; transition:opacity .28s ease; }
+  .book-modal.show .book-modal-backdrop { opacity:1; }
+  .book-modal-panel { position:absolute; left:50%; top:50%; transform:translate(-50%,-46%) scale(.98); width:min(560px,calc(100% - 28px)); max-height:92vh; overflow-y:auto; -webkit-overflow-scrolling:touch; background:#fff; border-radius:22px; box-shadow:0 30px 80px -20px rgba(10,25,41,0.6); opacity:0; transition:opacity .3s ease, transform .3s cubic-bezier(.4,0,.2,1); padding:20px 18px 18px; }
+  .book-modal.show .book-modal-panel { opacity:1; transform:translate(-50%,-50%) scale(1); }
+  .book-modal-panel .booking-card { box-shadow:none; border:none; background:transparent; padding:0; }
+  .book-modal-x { position:sticky; top:-4px; float:right; margin:-6px -4px 0 0; width:38px; height:38px; border:none; border-radius:50%; background:var(--sand); color:var(--navy); font-size:24px; line-height:1; cursor:pointer; z-index:2; transition:background .2s; }
+  .book-modal-x:hover { background:var(--teal-soft); }
+  body.book-modal-open { overflow:hidden; }
+  /* Mobile: modal sheet-fills the small screen, anchored a bit higher so the keyboard has room */
+  @media (max-width:560px){
+    .book-modal-panel { top:0; left:0; transform:translateY(24px); width:100%; max-width:100%; max-height:100vh; min-height:100vh; border-radius:0; padding:16px 16px 24px; }
+    .book-modal.show .book-modal-panel { transform:translateY(0); }
+  }
+</style>
 </head>
 <body>
     <!-- Google Tag Manager (noscript) -->
@@ -1027,7 +1053,7 @@ footer a:hover { color: white; }
     <li><a href="#reviews">Reviews</a></li>
     <li><a href="#book">Contact</a></li>
   </ul>
-  <a href="#book" class="nav-cta">Book Free Consult</a>
+  <a href="#book" class="nav-cta" onclick="return rcOpenModal(event)">Book Free Consult</a>
 </nav>
 
 <!-- BREADCRUMB -->
@@ -1054,9 +1080,11 @@ footer a:hover { color: white; }
       <span class="hero-rating-text"><strong>5.0</strong> Google Rating · <strong>86</strong> happy patients</span>
     </div>
     <div class="hero-btns">
-      <a href="#book" class="btn-primary" data-testid="hero-book-btn">📅 Book Free Consultation</a>
+      <a href="#book" id="heroBookBtn" class="btn-primary" data-testid="hero-book-btn" aria-expanded="false" aria-controls="heroBookPanel" onclick="return rcHeroToggle(event)">📅 Book Free Consultation</a>
       <a href="https://wa.me/919442645111?text=Hi%2C%20I%20need%20a%20root%20canal%20appointment" class="btn-secondary">💬 WhatsApp Us</a>
     </div>
+    <!-- Hero inline-expand mount: the #rcBook form slides in here when the hero CTA is tapped -->
+    <div id="heroBookPanel" class="hero-book-panel"><div id="heroBookInner" class="hero-book-inner"></div></div>
   </div>
 
   <div class="hero-right">
@@ -2087,5 +2115,108 @@ document.querySelectorAll('.animate-in, .symptom-card, .step-card, .review-card'
 })();
 </script>
 
+<!-- Header "Book Free Consult" modal overlay: the #rcBook form is mounted into #bookModalBody on open -->
+<div id="bookModal" class="book-modal" aria-hidden="true">
+  <div class="book-modal-backdrop" data-book-close></div>
+  <div class="book-modal-panel" role="dialog" aria-modal="true" aria-label="Book your free consultation">
+    <button type="button" class="book-modal-x" aria-label="Close" data-book-close>&times;</button>
+    <div id="bookModalBody"></div>
+  </div>
+</div>
+
+<script>
+/* Book-CTA controller (2026-07-12)
+   One physical form (#book .booking-card) is relocated between three homes:
+   its default section, the hero inline panel, and the header modal.
+   Moving the node keeps element IDs unique so the existing rcBook script keeps working. */
+(function(){
+  var card = document.querySelector('#book .booking-card');
+  var bookSection = document.getElementById('book');
+  var homeContainer = card ? card.parentNode : null;
+  var heroPanel = document.getElementById('heroBookPanel');
+  var heroInner = document.getElementById('heroBookInner');
+  var heroBtn = document.getElementById('heroBookBtn');
+  var modal = document.getElementById('bookModal');
+  var modalBody = document.getElementById('bookModalBody');
+  if(!card) return;
+
+  var heroOpen = false, modalOpen = false;
+
+  function reveal(){ card.classList.add('visible'); } // defeat the scroll-reveal opacity:0
+  function focusFirst(){ var i = card.querySelector('#rcQ1'); if(i){ try{ i.focus({preventScroll:true}); }catch(e){ i.focus(); } } }
+  function homeShow(on){ if(bookSection) bookSection.style.display = on ? '' : 'none'; }
+
+  function returnHome(){
+    if(card.parentNode !== homeContainer){ homeContainer.appendChild(card); }
+    homeShow(true);
+  }
+
+  /* ---- Hero inline expand ---- */
+  window.rcHeroToggle = function(e){
+    if(e){ e.preventDefault(); }
+    if(heroOpen){ collapseHero(); return false; }
+    if(modalOpen){ closeModal(); }
+    heroInner.appendChild(card);
+    reveal();
+    homeShow(false);
+    heroPanel.classList.add('open');
+    heroPanel.style.maxHeight = heroPanel.scrollHeight + 'px';
+    var onEnd = function(ev){ if(ev.propertyName!=='max-height') return; heroPanel.style.maxHeight = 'none'; heroPanel.removeEventListener('transitionend', onEnd); };
+    heroPanel.addEventListener('transitionend', onEnd);
+    heroOpen = true;
+    heroBtn.classList.add('is-open');
+    heroBtn.setAttribute('aria-expanded','true');
+    heroBtn.textContent = '✕ Hide form';
+    setTimeout(function(){
+      heroPanel.scrollIntoView({ behavior:'smooth', block:'center' });
+      focusFirst();
+    }, 320);
+    return false;
+  };
+  function collapseHero(){
+    heroPanel.style.maxHeight = heroPanel.scrollHeight + 'px';
+    void heroPanel.offsetHeight; // reflow so the transition runs
+    heroPanel.classList.remove('open');
+    heroPanel.style.maxHeight = '0px';
+    var onEnd = function(ev){ if(ev.propertyName!=='max-height') return; returnHome(); heroPanel.removeEventListener('transitionend', onEnd); };
+    heroPanel.addEventListener('transitionend', onEnd);
+    heroOpen = false;
+    heroBtn.classList.remove('is-open');
+    heroBtn.setAttribute('aria-expanded','false');
+    heroBtn.textContent = '📅 Book Free Consultation';
+  }
+
+  /* ---- Header modal ---- */
+  function openModal(e){
+    if(e){ e.preventDefault(); }
+    if(heroOpen){ collapseHero(); }
+    modalBody.appendChild(card);
+    reveal();
+    homeShow(false);
+    modal.classList.add('show');
+    modal.setAttribute('aria-hidden','false');
+    document.body.classList.add('book-modal-open');
+    modalOpen = true;
+    setTimeout(focusFirst, 120);
+    return false;
+  }
+  function closeModal(){
+    modal.classList.remove('show');
+    modal.setAttribute('aria-hidden','true');
+    document.body.classList.remove('book-modal-open');
+    returnHome();
+    modalOpen = false;
+  }
+  window.rcOpenModal = openModal;
+  window.rcCloseModal = closeModal;
+
+  modal.addEventListener('click', function(e){
+    if(e.target.hasAttribute('data-book-close')) closeModal();
+  });
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape' && modal.classList.contains('show')) closeModal();
+  });
+})();
+</script>
 </body>
 </html>

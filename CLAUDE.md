@@ -95,6 +95,19 @@ Created **`frontend/public/privacy-policy.html`** (on-brand, at `/privacy-policy
 
 - **2026-07-11: root-canal.html has NO mobile sticky CTA bar — removed intentionally.** Clarity/analytics showed mobile visitors tapped the fixed bottom "WhatsApp Us / Call Now" bar instead of viewing the page and submitting the booking form. Removed the `.sticky-bar` element + its CSS + the `body{padding-bottom:72px}` that reserved space for it. Desktop floating `.wa` WhatsApp circle and the hero "WhatsApp Us" button were kept. Do NOT re-add a mobile sticky CTA bar here without checking conversion data.
 
+## 5e. Book-CTA: hero inline-expand + header modal — 2026-07-12
+
+Clarity showed visitors tapping the hero "Book Free Consultation" then dropping off during the scroll down to the `#book` form. Fix: open the form where they are instead of scrolling. Two **deliberately different** experiences were built on `root-canal.html` to A/B evaluate, to be unified into one format later (owner's call):
+
+- **Hero CTA** (`#heroBookBtn`) → **inline expand**: the form slides open in a panel (`#heroBookPanel`) right under the hero buttons.
+- **Header "Book Free Consult"** (`.nav-cta`) → **modal overlay** (`#bookModal`): dim/blur backdrop, centered card on desktop, full-screen sheet on ≤560px (mobile-first, since most traffic is mobile). Closes on ✕, backdrop click, or Escape; locks body scroll.
+
+**Key architecture (non-obvious):** there is still only **one** physical form — `#book .booking-card` (the 6-step `#rcBook`). A controller script at the end of `<body>` **relocates that single node** between three homes (its default `#book` section, `#heroBookInner`, `#bookModalBody`) via `appendChild`. This keeps all element IDs unique so the **existing `rcBook` form script keeps working untouched**. While the form is borrowed, `#book` is `display:none`; it's returned home (and reshown) on modal close / hero collapse. The form also gets `.visible` forced on mount to defeat the `.animate-in` scroll-reveal (opacity:0). Hooks: `window.rcHeroToggle`, `window.rcOpenModal`, `window.rcCloseModal`. The other `#book` anchor CTAs (nav link, symptom-nudge, EMI, footer) still just scroll to the section as before.
+
+- Both CTAs keep `href="#book"` as a no-JS fallback (the `onclick` returns false to suppress the jump when JS runs).
+- Only `root-canal.html` was changed. The React homepage and other service pages still scroll to their booking sections.
+- **File-integrity note:** during this edit the working copy got truncated once mid-file; it was restored from `git show HEAD:` and all 4 edits re-applied via script, then validated headlessly (jsdom) — 22 assertions covering both flows pass. If editing large HTML here, verify the tail (`</body></html>`) after saving.
+
 ## 6. Gotchas for future sessions
 
 - **Live site = `frontend/` (React homepage) + `frontend/public/*.html` (static service pages). `dazzle-next/` is NOT deployed.** Make changes in `frontend/`.
