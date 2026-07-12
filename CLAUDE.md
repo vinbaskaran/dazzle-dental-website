@@ -92,6 +92,8 @@ Created **`frontend/public/privacy-policy.html`** (on-brand, at `/privacy-policy
 - **Footer "Privacy Policy" link + a one-line analytics disclosure added to every page:** the 7 intact static service pages (root-canal, dental-implants, teeth-whitening, smile-makeover, wisdom-tooth-extraction, hydra-facial, hair-prp), the React homepage (`src/components/Footer.jsx`), the ad landing page (`free-checkup.html`, important for Google Ads policy), and `thank-you.html`.
 - Rationale: local competitors set a low bar (smiledentistree.com has no policy at all; karpagamdentalcare.com has a boilerplate one with a leftover `.local` dev URL). This is a real, tailored policy. Not legal advice — owner should have it reviewed.
 
+- **2026-07-11: root-canal.html has NO mobile sticky CTA bar — removed intentionally.** Clarity/analytics showed mobile visitors tapped the fixed bottom "WhatsApp Us / Call Now" bar instead of viewing the page and submitting the booking form. Removed the `.sticky-bar` element + its CSS + the `body{padding-bottom:72px}` that reserved space for it. Desktop floating `.wa` WhatsApp circle and the hero "WhatsApp Us" button were kept. Do NOT re-add a mobile sticky CTA bar here without checking conversion data.
+
 ## 6. Gotchas for future sessions
 
 - **Live site = `frontend/` (React homepage) + `frontend/public/*.html` (static service pages). `dazzle-next/` is NOT deployed.** Make changes in `frontend/`.
