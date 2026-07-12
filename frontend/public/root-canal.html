@@ -2140,7 +2140,7 @@ document.querySelectorAll('.animate-in, .symptom-card, .step-card, .review-card'
   var modalBody = document.getElementById('bookModalBody');
   if(!card) return;
 
-  var heroOpen = false, modalOpen = false;
+  var heroOpen = false, modalOpen = false, savedScroll = 0;
 
   function reveal(){ card.classList.add('visible'); } // defeat the scroll-reveal opacity:0
   function focusFirst(){ var i = card.querySelector('#rcQ1'); if(i){ try{ i.focus({preventScroll:true}); }catch(e){ i.focus(); } } }
@@ -2156,6 +2156,7 @@ document.querySelectorAll('.animate-in, .symptom-card, .step-card, .review-card'
     if(e){ e.preventDefault(); }
     if(heroOpen){ collapseHero(); return false; }
     if(modalOpen){ closeModal(); }
+    savedScroll = window.pageYOffset || document.documentElement.scrollTop || 0;
     heroInner.appendChild(card);
     reveal();
     homeShow(false);
@@ -2168,9 +2169,14 @@ document.querySelectorAll('.animate-in, .symptom-card, .step-card, .review-card'
     heroBtn.setAttribute('aria-expanded','true');
     heroBtn.textContent = '✕ Hide form';
     setTimeout(function(){
-      heroPanel.scrollIntoView({ behavior:'smooth', block:'center' });
+      // Bring the form comfortably into view (just below the sticky nav) without yanking the page.
+      var nav = document.querySelector('nav');
+      var navH = nav ? nav.offsetHeight : 0;
+      var rect = heroBtn.getBoundingClientRect();
+      var target = rect.top + (window.pageYOffset || 0) - navH - 16;
+      window.scrollTo({ top: Math.max(0, target), behavior:'smooth' });
       focusFirst();
-    }, 320);
+    }, 340);
     return false;
   };
   function collapseHero(){
@@ -2178,12 +2184,17 @@ document.querySelectorAll('.animate-in, .symptom-card, .step-card, .review-card'
     void heroPanel.offsetHeight; // reflow so the transition runs
     heroPanel.classList.remove('open');
     heroPanel.style.maxHeight = '0px';
-    var onEnd = function(ev){ if(ev.propertyName!=='max-height') return; returnHome(); heroPanel.removeEventListener('transitionend', onEnd); };
+    var done = false;
+    var finish = function(){ if(done) return; done = true; heroPanel.style.maxHeight = '0px'; returnHome(); };
+    var onEnd = function(ev){ if(ev.propertyName!=='max-height') return; heroPanel.removeEventListener('transitionend', onEnd); finish(); };
     heroPanel.addEventListener('transitionend', onEnd);
+    setTimeout(finish, 650); // fallback if transitionend doesn't fire
     heroOpen = false;
     heroBtn.classList.remove('is-open');
     heroBtn.setAttribute('aria-expanded','false');
     heroBtn.textContent = '📅 Book Free Consultation';
+    // Return the reader to where they were before the form pushed the page down.
+    window.scrollTo({ top: Math.max(0, savedScroll), behavior:'smooth' });
   }
 
   /* ---- Header modal ---- */
