@@ -94,7 +94,7 @@ export const Hero = () => {
               ))}
             </div>
             <div className="text-sm">
-              <div className="text-brand-navy font-medium">★ 5.0 · 100+ Google reviews</div>
+              <div className="text-brand-navy font-medium">★ 5.0 · 86 Google reviews</div>
               <div className="text-slate-500">Trusted by families across Chennai</div>
             </div>
           </motion.div>
@@ -126,7 +126,7 @@ export const Hero = () => {
             className="hidden md:block absolute -left-8 bottom-12 bg-white rounded-2xl shadow-xl p-5 max-w-[230px] border border-brand-navy/5"
           >
             <div className="font-serif text-2xl text-brand-navy">5.0 ★</div>
-            <div className="text-xs text-slate-500 mt-1">Rated by 100+ patients on Google</div>
+            <div className="text-xs text-slate-500 mt-1">Rated by 86 patients on Google</div>
           </motion.div>
           <motion.div
             initial={{ opacity: 0, y: 20 }}

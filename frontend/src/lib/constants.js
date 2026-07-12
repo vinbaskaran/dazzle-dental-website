@@ -100,7 +100,7 @@ export const SERVICE_CATEGORIES = [
 
 export const STATS = [
   { value: "5★", label: "Google Rating" },
-  { value: "100+", label: "Patient Reviews" },
+  { value: "86", label: "Patient Reviews" },
   { value: "30+", label: "Treatments Offered" },
   { value: "All Days", label: "Open · 10–1 & 5–9" },
 ];

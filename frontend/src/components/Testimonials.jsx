@@ -27,7 +27,7 @@ export const Testimonials = () => {
                   <Star key={k} className="w-3.5 h-3.5 fill-brand-teal" />
                 ))}
               </div>
-              <div className="text-[11px] text-slate-500 mt-0.5 tracking-wide">5.0 · 100+ Google reviews</div>
+              <div className="text-[11px] text-slate-500 mt-0.5 tracking-wide">5.0 · 86 Google reviews</div>
             </div>
           </a>
         </div>
