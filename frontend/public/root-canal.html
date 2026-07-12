@@ -392,13 +392,6 @@ nav {
 .hero-chip-label { font-size: 10px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 4px; }
 .hero-chip-val { font-family: 'Playfair Display', serif; font-size: 30px; font-weight: 700; color: var(--navy); line-height: 1; }
 .hero-chip-sub { font-size: 12px; color: var(--muted); margin-top: 4px; }
-/* Mobile-only 500+ credibility badge (desktop shows this via .hero-right chip, which is hidden on mobile) */
-.hero-stat-m { display: none; }
-@media (max-width:768px){
-  .hero-stat-m { display: inline-flex; align-items: center; gap: 14px; margin-top: 18px; padding: 12px 18px; background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.16); border-radius: 16px; width: fit-content; max-width: 100%; }
-  .hero-stat-m .n { font-family: 'Playfair Display', serif; font-size: 30px; font-weight: 700; color: #9ECCCB; line-height: 1; flex-shrink: 0; }
-  .hero-stat-m .t { font-size: 11.5px; font-weight: 600; color: rgba(255,255,255,0.8); line-height: 1.35; text-transform: uppercase; letter-spacing: 0.07em; padding-left: 14px; border-left: 1px solid rgba(255,255,255,0.22); }
-}
 @media (max-width: 768px) {
   .hero { grid-template-columns: 1fr; min-height: auto; padding-top: 0 !important; padding-bottom: 0 !important; }
   .hero-right { display: none; }
@@ -1084,10 +1077,8 @@ footer a:hover { color: white; }
     <p class="hero-desc">Advanced root canal treatment with modern anaesthesia by Dr. Aishwarya Lakshmi. Most patients feel <strong>nothing</strong> during the procedure — and walk out pain-free, often in a single visit.</p>
     <div class="hero-rating">
       <span class="stars">★★★★★</span>
-      <span class="hero-rating-text"><strong>5.0</strong> Google Rating · <strong>86</strong> happy patients</span>
+      <span class="hero-rating-text"><strong>5.0</strong> Google Rating · <strong>86</strong> happy patients · <strong>500+</strong> root canals done</span>
     </div>
-    <!-- Mobile-only: mirrors the desktop .hero-right "500+ Procedures Completed" chip (hidden on mobile) -->
-    <div class="hero-stat-m"><span class="n">500+</span><span class="t">Root Canal Treatments<br>Completed</span></div>
     <div class="hero-btns">
       <a href="#book" id="heroBookBtn" class="btn-primary" data-testid="hero-book-btn" aria-expanded="false" aria-controls="heroBookPanel" onclick="return rcHeroToggle(event)">📅 Book Free Consultation</a>
       <a href="https://wa.me/919442645111?text=Hi%2C%20I%20need%20a%20root%20canal%20appointment" class="btn-secondary">💬 WhatsApp Us</a>
