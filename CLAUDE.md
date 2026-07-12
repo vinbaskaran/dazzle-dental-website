@@ -35,7 +35,7 @@ Deploy timing: editing a file in `frontend/public/*.html` still goes through a R
   - light `#FDFDFB`, sand `#F5F5F0`, pearl `#EDF2F4`
   - text `#0F172A`, muted `#475569`, border `#E2E4E0`
 - Buttons: navy background → teal on hover, subtle translateY lift.
-- **Mobile spacing:** all 8 service pages have a `@media (max-width:768px)` override reducing `section` vertical padding **88px → 52px** (added 2026-07-11 to cut scroll length for ad traffic; marker comment `mobile spacing tightened` + a small `<style>` before `</head>`). Desktop unchanged.
+- **Mobile spacing (all 8 service pages, ≤768px):** a `<style>` override before `</head>` (marker `mobile spacing tightened`) sets `section` vertical padding to **32px top / 40px bottom** (was 88px; added 2026-07-11 to cut scroll length for ad traffic). The **hero** is handled separately — `.hero{padding:0 !important}` + `.hero-left{padding:32px 6% 40px}` — so it matches the same 32/40 rhythm. Desktop unchanged.
 - **Analytics on every page:** GTM `GTM-NFHTT4T6`, GA4 `G-ZRBD0QKYY4`, **Microsoft Clarity** `xknxl0n8dh` (heatmaps + session recordings).
 - **Clinic facts:** Dr. Aishwarya Lakshmi (BDS · FMC · PGDCC). Phone `+91 94426 45111`. Melakottaiyur, Kelambakkam–Vandalur Rd, Chennai 600127. Open all 7 days, 10 AM–1 PM & 5–9 PM. Email `dazzledentalcosmetic@gmail.com`.
 
